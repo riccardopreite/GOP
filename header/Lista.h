@@ -1,0 +1,18 @@
+#include<ctime>
+#include<cstdlib>
+using namespace std;
+
+
+class Lista{
+        private: Nodo *Start;
+    			 Coda c;
+        public:
+			Lista();
+            ~Lista();
+            void AddFront(Nodo *nuovo);
+            void Append(int n);
+            void Visualizza();
+        	void SetGiocatore(Persona *g, int n, int n_caselle);
+        	int GetType();
+
+};
