@@ -3,12 +3,11 @@
 
 #include "header.h"
 int main(){
-  int x=0,res,n_caselle;
+  int x=0,res,n_caselle,giocatori;
   bool win=false;
   string winner;
   Persona *c;
   string nome;
-  deck a=deck();
   Giocatori g = Giocatori();
   Lista l=Lista();
   Dado d1 = Dado();
@@ -22,17 +21,18 @@ int main(){
   l.Visualizza();
   do{
     cout<<"Quanti giocatori ci sono? (minimo 2)\n";
-    cin>>x;
+    cin>>giocatori;
   }
-  while(x<2);
-  while(x>0){
+  while(giocatori<2);
+  x=giocatori;
+  while(giocatori>0){
     cout<<"inserisci il nome del giocatore:\n";
     cin>>nome;
     g.aggiungi_giocatore(nome);
-    x--;
+    giocatori--;
   }
   cout<<"Iniziamo!\n";
-  c=g.Set_first();
+  c=g.Set_first(x);
   while(win==false){
       cout<<"\npremi invio per tirare i dadi\n";
       if(getc(stdin) != 13){
@@ -51,7 +51,6 @@ int main(){
     }
   //if controllo casella per decidere azione
   //  a.catch_card(c);
-  //t--;
   winner=c->getNome();
   cout<<"Il vincitore è:"<<winner<<endl;
   return 0;

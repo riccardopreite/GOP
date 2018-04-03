@@ -2,7 +2,8 @@
 
 Lista::Lista(){
   Start=NULL;
-  c = Coda(3);
+  c = Coda(4);
+  card=deck();
 }
 
 Lista::~Lista(){
@@ -64,35 +65,30 @@ void Lista::Visualizza()
   }
 }
 
-void Lista::SetGiocatore(Persona *g, int n, int n_caselle){
+void Lista::SetGiocatore(Persona *giocatore, int n, int n_caselle){
   int scarto;
-  int res_duello, res_duello_2;
-  bool duello=true;
-  Dado d1 = Dado();
-  Dado d2 = Dado();
-  Giocatori player=Giocatori();
   if(Start == NULL){
     return;
   }
   Nodo *tmp = Start;
   Nodo *tmp2 = Start;
-  Persona *giocatore;
-  giocatore=g;
+  Persona *giocatore2;
+  giocatore2=giocatore;
   while(tmp2 != NULL){
-    if(tmp2->GetNome() == giocatore){
+    if(tmp2->GetNome() == giocatore2){
       tmp2->SetNome(NULL);
       break;
     }
     tmp2 = tmp2->GetSucc();
   }
-  g->setCasella(g->getCasella()+n);
-  if(g->getCasella()>n_caselle){
-    scarto=g->getCasella()-n_caselle;
+  giocatore->setCasella(giocatore->getCasella()+n);
+  if(giocatore->getCasella()>n_caselle){
+    scarto=giocatore->getCasella()-n_caselle;
     cout<<"oh no! Sei andato oltre al limite del tabellone, devi tornare indietro di: "<<scarto<<" caselle!\n";
-    g->setCasella(n_caselle-scarto);
+    giocatore->setCasella(n_caselle-scarto);
   }
   while(tmp->GetSucc() != NULL){
-    if(tmp->GetNum() == g->getCasella()){
+    if(tmp->GetNum() == giocatore->getCasella()){
       break;
     }
     tmp = tmp->GetSucc();
@@ -100,37 +96,63 @@ void Lista::SetGiocatore(Persona *g, int n, int n_caselle){
 //  giocatore=tmp->GetNome();
   //Trovare prima giocatore ed eliminare la posizione nel tabellone
   if(tmp->GetNome() == NULL){
-    tmp->SetNome(g);
+    tmp->SetNome(giocatore);
+    switch(tmp->GetType()){
+      case 1:
+      card.catch_card(giocatore);
+      break;
+      case 2:
+      card.catch_card(giocatore);
+      break;
+      case 3:
+      card.catch_card(giocatore);
+      break;
+      case 4:
+      card.catch_card(giocatore);
+      break;
+      case 5:
+      card.catch_card(giocatore);
+      break;
+    }
     //Controllare il tipo casella
     //return SetGiocatore(g,g->GetCasella)
   }else{
     giocatore=tmp->GetNome();
-    while(duello==true){
-    cout<<"E' ora del duello!\n"<<g->getNome()<<"Lancia i dadi!\n";
-    if(getc(stdin) != 13){
-      res_duello= d1.Tira() + d2.Tira();
-      cout<<"Hai fatto: "<<res_duello<<endl;
-    }
-    cout<<"\nLancia i dadi!\n"<<giocatore->getNome()<<endl;
-    if(getc(stdin) != 13){
-      res_duello_2= d1.Tira() + d2.Tira();
-      cout<<"Hai fatto: "<<res_duello_2<<endl;
-    }
-    if(res_duello>res_duello_2){
-      cout<<"Ha vinto "<<g->getNome()<<endl;
-    //  giocatore=player.search_player(g->getNome());
-      res_duello_2=giocatore->getCasella()-res_duello_2;
-      duello=false;
-      giocatore->setCasella(res_duello_2);
-    }
-    else if(res_duello<res_duello_2){
-      cout<<"Ha vinto "<<giocatore->getNome()<<endl;
-      duello=false;
-    //  giocatore=player.search_player(g->getNome());
-      res_duello=g->getCasella()-res_duello;
-      g->setCasella(res_duello);
-    }
-    else cout<<"Oh no! Avete fatto lo stesso risultato dovete combattere ancora!\n";
-}
+    duello(giocatore,giocatore2);
   }
+}
+
+void Lista::duello(Persona *giocatore, Persona* giocatore2){
+  bool duello=true;
+  int res_duello, res_duello_2;
+  Dado d1 = Dado();
+  Dado d2 = Dado();
+  while(duello==true){
+  cout<<"E' ora del duello!\n"<<giocatore->getNome()<<"Lancia i dadi!\n";
+  if(getc(stdin) != 13){
+    res_duello= d1.Tira() + d2.Tira();
+    cout<<"Hai fatto: "<<res_duello<<endl;
+  }
+  cout<<"\nLancia i dadi!\n"<<giocatore2->getNome()<<endl;
+  if(getc(stdin) != 13){
+    res_duello_2= d1.Tira() + d2.Tira();
+    cout<<"Hai fatto: "<<res_duello_2<<endl;
+  }
+  if(res_duello>res_duello_2){
+    cout<<"Ha vinto "<<giocatore->getNome()<<endl;
+    res_duello_2=giocatore2->getCasella()-res_duello_2;
+    duello=false;
+    giocatore2->setCasella(res_duello_2);
+  }
+  else if(res_duello<res_duello_2){
+    cout<<"Ha vinto "<<giocatore2->getNome()<<endl;
+    duello=false;
+    res_duello=giocatore->getCasella()-res_duello;
+    giocatore->setCasella(res_duello);
+  }
+  else cout<<"Oh no! Avete fatto lo stesso risultato dovete combattere ancora!\n";
+}
+cout<<"\nOra "<<giocatore2->getNome()<<" è nella casella "<<giocatore2->getCasella()<<endl;
+cout<<"Ora "<<giocatore->getNome()<<" è nella casella "<<giocatore->getCasella()<<endl;
+
 }

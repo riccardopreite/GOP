@@ -6,6 +6,7 @@ using namespace std;
 class Lista{
         private: Nodo *Start;
     			 Coda c;
+           deck card;
         public:
 			Lista();
             ~Lista();
@@ -14,5 +15,6 @@ class Lista{
             void Visualizza();
         	void SetGiocatore(Persona *g, int n, int n_caselle);
         	int GetType();
+          void duello(Persona *giocatore, Persona *giocatore2);
 
 };

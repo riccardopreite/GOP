@@ -2,22 +2,13 @@
 #include "header.h"
 
 deck::deck(){
-  for(int iq=0; iq<4;iq++){
-    queue[iq]=-1;
-  }
+  coda=Coda();
+  coda=Coda(4);
   cont=0;
-  #if 0
   d1=Dado();
   d2=Dado();
-  #endif
 }
 
-void deck::stampa_queue(){
-  for(int iq=3; iq>=0; iq-- ){
-    cout<<" "<<queue[iq]<<" ";
-  }
-  cout<<endl;
-}
 
 void deck::catch_card(Persona *g){
   bool check;
@@ -25,13 +16,13 @@ void deck::catch_card(Persona *g){
     srand(static_cast<unsigned int>(time(NULL)));
     n_card=(rand() % 109)+1;
     n_card=n_card/10;
-    check=found(n_card);
+    check=coda.Find(n_card);
   }
   while(check==true);
   if(this->cont>=4){
-    edit_queue();
+    coda.Shift2();
   }
-  insert_queue(n_card);
+  cont=coda.insert(n_card);
   call_effect(n_card, g);
   return;
 }
@@ -80,6 +71,7 @@ void deck::call_effect(int n_card, Persona *g){
   return;
 }
 
+#if 0
 bool deck::found(int n_card){
   bool check=false;
   for(int iq=3; iq>=0;iq--){
@@ -106,12 +98,19 @@ void deck::insert_queue(int n_card){
   for(int iq=3; iq>=0; iq--){
     if(queue[iq]==-1){
       queue[iq]=n_card;
-
       return;
     }
   }
   return;
 }
+void deck::stampa_queue(){
+  for(int iq=3; iq>=0; iq-- ){
+    cout<<" "<<queue[iq]<<" ";
+  }
+  cout<<endl;
+}
+#endif
+
 void deck::effect_0(Persona *g){
   printf("Oh no! Hai incontrato uno stregone.\n Se fai più di 6 puoi ritirare i dadi, altrimenti rimani fermo due turni\n" );    //parametro: puntatore al giocatore passato per indirizzo, modifico i campi in base all'effetto
 

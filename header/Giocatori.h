@@ -21,7 +21,7 @@ public:
 	void stampa_giocatore(Persona *c);
 	Persona *player_turn(Persona *c);
 	Persona *search_player(string nome);
-	Persona *Set_first();
+	Persona *Set_first(int n_giocatori);
 };
 
 

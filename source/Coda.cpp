@@ -1,13 +1,15 @@
 #include "header.h"
+
 Coda::Coda(){
+
 }
-
-
 Coda::Coda(int n){
 	l = n;
+	cont=0;
 	for(int i = 0; i < l; i ++){
 		this->coda[i] = -1;
 	}
+	cont=0;
 }
 
 Coda::~Coda(){
@@ -22,6 +24,15 @@ void Coda::Shift(int val){
 	}
 	this->coda[0]=val;
 }
+void Coda::Shift2(){
+	int j=l-1;
+	for(int i = l-2; i >= 0; i-- ){
+		this->coda[j] = this->coda[i];
+		j--;
+	}
+	this->coda[0]=-1;
+}
+
 
 void Coda::Visualizza(){
 	for(int i = 0; i < l; i ++){
@@ -37,4 +48,16 @@ bool Coda::Find(int val){
 		}
 	}
 	return false;
+}
+int Coda::insert(int n_card){
+	if (this->cont<4){
+		this->cont++;
+	}
+	for(int iq=3; iq>=0; iq--){
+		if(coda[iq]==-1){
+			coda[iq]=n_card;
+			break;
+		}
+	}
+	return cont;
 }
