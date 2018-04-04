@@ -51,6 +51,15 @@ void Giocatori::stampa_giocatore(Persona *c){
   Persona *tmp= c;
   cout << tmp->getNome()<<"\n";
 }
+
+void Giocatori::stampa_posizione(){
+  Persona *tmp=head;
+  while(tmp!=NULL){
+    cout<<endl<<tmp->getNome()<<" è nella poszione: "<<tmp->getCasella()<<endl;
+    tmp=tmp->getNext();
+  }
+}
+
 Persona *Giocatori::Set_first(int n_giocatori){
   int first;
   Persona *tmp=head;

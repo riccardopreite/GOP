@@ -160,11 +160,11 @@ void deck::effect_5(){
   return;
 }
 void deck::effect_6(Persona *g){
-  printf("Sei caduto nel pozzo e ti sei rotto una gamba!\n Fai 5 per guarire altrimenti rimani lì per due turni.\n" );
+  printf("Sei caduto nel pozzo e ti sei rotto una gamba!\n Fai almeno 5 per guarire altrimenti rimani lì per due turni.\n" );
   lancio=d1.Tira() + d2.Tira();
   cout<<"Hai fatto: "<<lancio<<endl;
 
-  if(lancio!=5){
+  if(lancio<=5){
   g->setstop(g->getstop() + 2);
 }
 return;

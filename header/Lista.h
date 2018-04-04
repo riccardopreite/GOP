@@ -16,5 +16,6 @@ class Lista{
         	void SetGiocatore(Persona *g, int n, int n_caselle);
         	int GetType();
           void duello(Persona *giocatore, Persona *giocatore2);
+          void get_effect(Persona *giocatore);
 
 };

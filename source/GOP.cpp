@@ -31,9 +31,19 @@ int main(){
     g.aggiungi_giocatore(nome);
     giocatori--;
   }
+  cout<<"Premi invio per iniziare!\n";
+  if(getc(stdin) != 13){
+  system("clear");
+}
   cout<<"Iniziamo!\n";
   c=g.Set_first(x);
   while(win==false){
+    if(c->getstop()!=0){
+      g.stampa_giocatore(c);
+      c->setstop(c->getstop()-1);
+      cout<<"Devi rimanere fermo ancora: "<<c->getstop()<<" turni\n";
+    }
+    else{
       cout<<"\npremi invio per tirare i dadi\n";
       if(getc(stdin) != 13){
         cout<<"è il turno di: ";
@@ -41,16 +51,16 @@ int main(){
         res = d1.Tira() + d2.Tira();
         cout<<res<<endl;
         l.SetGiocatore(c, res, n_caselle);
-        cout<<c->getCasella();
+        //cout<<c->getCasella();
+        g.stampa_posizione();
       }
+    }
       if(c->getCasella()==n_caselle){
         win=true;
         break;
       }
       c=g.player_turn(c);
     }
-  //if controllo casella per decidere azione
-  //  a.catch_card(c);
   winner=c->getNome();
   cout<<"Il vincitore è:"<<winner<<endl;
   return 0;

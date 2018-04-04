@@ -19,6 +19,7 @@ public:
 	~Giocatori();
 	void aggiungi_giocatore(string nome);
 	void stampa_giocatore(Persona *c);
+	void stampa_posizione();
 	Persona *player_turn(Persona *c);
 	Persona *search_player(string nome);
 	Persona *Set_first(int n_giocatori);
