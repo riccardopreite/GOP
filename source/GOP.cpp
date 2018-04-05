@@ -22,8 +22,7 @@ int main(){
     l.Append(i);
   }
   cout<<"Il tabellone è di: "<<n_caselle<<" caselle.\n";
-  l.Visualizza();
-  cout<<"Quanti giocatori ci sono? (minimo 2)\n";
+  cout<<"\nQuanti giocatori ci sono? (minimo 2)\n";
 
   cin>>giocatori;
 
@@ -39,6 +38,7 @@ int main(){
     g.aggiungi_giocatore(nome);
     giocatori--;
   }
+  l.Visualizza(n_caselle);
   clearCin();
   cout<<"Premi invio per iniziare!\n";
   if(getc(stdin) != 13){
@@ -64,12 +64,13 @@ int main(){
       g.stampa_giocatore(c);
       cout<<"\npremi invio per tirare i dadi\n";
       if(getc(stdin) != 13){
+        system("clear");
         res = d1.Tira() + d2.Tira();
         cout<<res<<endl;
         l.SetGiocatore(c, res, n_caselle);
-        //cout<<c->getCasella();
-        g.stampa_posizione();
       }
+      l.Visualizza(n_caselle);
+      g.stampa_posizione();
     }
     if(c->getCasella()==n_caselle){
       win=true;

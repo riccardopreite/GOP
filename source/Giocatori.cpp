@@ -60,6 +60,11 @@ void Giocatori::stampa_posizione(){
   }
 }
 
+Persona *Giocatori::return_head(){
+  return(head);
+}
+
+
 Persona *Giocatori::Set_first(int n_giocatori){
   int first;
   Persona *tmp=head;
