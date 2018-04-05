@@ -2,7 +2,7 @@
 //main di prova
 
 #include "header.h"
-void clearCin(){
+void err_input(){
   cin.clear();
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
@@ -28,7 +28,7 @@ int main(){
 
   while((!cin.good())||giocatori<2){
     cout<<"Quanti giocatori ci sono? (minimo 2)\n";
-    clearCin();
+    err_input();
     cin>>giocatori;
   }
   x=giocatori;
@@ -39,7 +39,7 @@ int main(){
     giocatori--;
   }
   l.Visualizza(n_caselle);
-  clearCin();
+  err_input();
   cout<<"Premi invio per iniziare!\n";
   if(getc(stdin) != 13){
     system("clear");
