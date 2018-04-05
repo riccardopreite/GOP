@@ -15,7 +15,7 @@ void Lista::AddFront(Nodo *nuovo){
 
 //prendi random casella, vedi se in quelle adiacenti sono di diverso tipo,altrimenti ti blocchi
 
-// da 1 a 25 vuote, il resto mostri 
+// da 1 a 25 vuote, il resto mostri
 //0 è vuota
 //1 è mezzo
 //2 è mostro
@@ -73,12 +73,14 @@ int Lista::GetType(){
 
 void Lista::Append(int n)
 {
-  int tipo = GetType();
   Nodo *nuovo = new Nodo;
   nuovo->SetSucc(NULL);
   nuovo->SetNome(NULL);
   nuovo->SetNum(n);
-  nuovo->SetType(tipo);
+  if(n==0){
+    nuovo->SetType(0);
+  }
+   else nuovo->SetType(GetType());
 
   if(Start == NULL){
     AddFront(nuovo);
@@ -137,35 +139,29 @@ void Lista::SetGiocatore(Persona *giocatore, int n, int n_caselle){
     }
     tmp = tmp->GetSucc();
   }
-  //  giocatore=tmp->GetNome();
-  //Trovare prima giocatore ed eliminare la posizione nel tabellone
   if(tmp->GetNome() == NULL){
     tmp->SetNome(giocatore);
-    get_effect(giocatore);
-    //Controllare il tipo casella
-    //return SetGiocatore(g,g->GetCasella)
+    get_effect(giocatore, tmp);
   }
   else{
     giocatore2=tmp->GetNome();
     if(giocatore2->getNome()!=giocatore->getNome()){
       duello(giocatore,giocatore2);
-      //  cout<<"\nOra "<<giocatore2->getNome()<<" è nella casella "<<giocatore2->getCasella()<<endl;
-      //  cout<<"Ora "<<giocatore->getNome()<<" è nella casella "<<giocatore->getCasella()<<endl;
     }
   }
 }
 
-void Lista::get_effect(Persona *giocatore){
-  Nodo *tmp = Start;
+void Lista::get_effect(Persona *giocatore, Nodo *tmp){
   Persona *giocatore2;
   switch(tmp->GetType()){
+    case 0:
+    break;
     case 1:
     card.catch_card(giocatore);
     break;
     case 2:
     card.catch_card(giocatore);
     break;
-    #if 0
     case 3:
     card.catch_card(giocatore);
     break;
@@ -175,6 +171,7 @@ void Lista::get_effect(Persona *giocatore){
     case 5:
     card.catch_card(giocatore);
     break;
+    #if 0
     #endif
 
   }
@@ -186,7 +183,7 @@ void Lista::get_effect(Persona *giocatore){
   }
   if(tmp->GetNome() == NULL){
     tmp->SetNome(giocatore);
-    get_effect(giocatore);
+    get_effect(giocatore,tmp);
   }
   else{
     giocatore2=tmp->GetNome();
@@ -204,6 +201,9 @@ void Lista::get_effect(Persona *giocatore){
 
 void Lista::duello(Persona *giocatore, Persona* giocatore2){
   bool duello=true;
+  if(giocatore->getCasella()==0){
+    return;
+  }
   int res_duello, res_duello_2;
   Dado d1 = Dado();
   Dado d2 = Dado();
@@ -235,7 +235,7 @@ void Lista::duello(Persona *giocatore, Persona* giocatore2){
       }
       if(tmp2->GetNome() == NULL){
         tmp2->SetNome(giocatore);
-        get_effect(giocatore);
+        get_effect(giocatore,tmp2);
       }
       while(tmp->GetSucc() != NULL){
         if(tmp->GetNum() == giocatore2->getCasella()){
@@ -245,7 +245,7 @@ void Lista::duello(Persona *giocatore, Persona* giocatore2){
       }
       if(tmp->GetNome() == NULL){
         tmp->SetNome(giocatore2);
-        get_effect(giocatore2);
+        get_effect(giocatore2,tmp);
       }
       else{
         giocatore=tmp->GetNome();
@@ -270,7 +270,7 @@ void Lista::duello(Persona *giocatore, Persona* giocatore2){
       }
       if(tmp2->GetNome() == NULL){
         tmp2->SetNome(giocatore2);
-        get_effect(giocatore2);
+        get_effect(giocatore2,tmp2);
       }
 
       while(tmp->GetSucc() != NULL){
@@ -281,7 +281,7 @@ void Lista::duello(Persona *giocatore, Persona* giocatore2){
       }
       if(tmp->GetNome() == NULL){
         tmp->SetNome(giocatore);
-        get_effect(giocatore);
+        get_effect(giocatore,tmp);
       }
       else{
         giocatore2=tmp->GetNome();

@@ -2,6 +2,7 @@
 #include <time.h>
 #include <string>
 #include <ncurses.h>
+#include <limits>
 #include "Persona.h"
 #include "Dado.h"
 #include"Coda.h"

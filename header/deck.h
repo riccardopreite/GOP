@@ -18,7 +18,7 @@ public:
     void effect_2(Persona *g);
     void effect_3(Persona *g);
     void effect_4(Persona *g);
-    void effect_5();
+    void effect_5(Persona *g);
     void effect_6(Persona *g);
     void effect_7(Persona *g);
     void effect_8(Persona *g);

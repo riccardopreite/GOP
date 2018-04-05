@@ -49,13 +49,13 @@ Persona *Giocatori::search_player(string nome){
 
 void Giocatori::stampa_giocatore(Persona *c){
   Persona *tmp= c;
-  cout << tmp->getNome()<<"\n";
+  cout << tmp->getNome();
 }
 
 void Giocatori::stampa_posizione(){
   Persona *tmp=head;
   while(tmp!=NULL){
-    cout<<endl<<tmp->getNome()<<" è nella poszione: "<<tmp->getCasella()<<endl;
+    cout<<endl<<tmp->getNome()<<" è nella posizione: "<<tmp->getCasella()<<endl;
     tmp=tmp->getNext();
   }
 }
@@ -66,7 +66,6 @@ Persona *Giocatori::Set_first(int n_giocatori){
   n_giocatori=n_giocatori*100;
   first=(rand() % n_giocatori) +1;
   first=first/100;
-  cout<<"\nInizia il "<<first<<"giocatore\n";
   while(first>0){
     if(tmp==NULL){
       tmp=head;
@@ -74,7 +73,7 @@ Persona *Giocatori::Set_first(int n_giocatori){
     tmp=tmp->getNext();
     first--;
   }
-  cout<<tmp->getNome()<<" è il tuo turno!\n";
+  cout<<"\nInizia "<<tmp->getNome()<<endl;
   return tmp;
 }
 Persona *Giocatori::player_turn(Persona *c){

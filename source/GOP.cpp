@@ -2,6 +2,10 @@
 //main di prova
 
 #include "header.h"
+void clearCin(){
+  cin.clear();
+  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
 int main(){
   int x=0,res,n_caselle,giocatori;
   bool win=false;
@@ -19,20 +23,15 @@ int main(){
   }
   cout<<"Il tabellone è di: "<<n_caselle<<" caselle.\n";
   l.Visualizza();
-  do{
-	  try
-		{
-		cout<<"Quanti giocatori ci sono? (minimo 2)\n";
-		cin>>giocatori;
-		throw 1;
-	}
-  catch (int e)
-  {
-    cout << "Ma allora sei scemo\n";
+  cout<<"Quanti giocatori ci sono? (minimo 2)\n";
+
+  cin>>giocatori;
+
+  while((!cin.good())||giocatori<2){
+    cout<<"Quanti giocatori ci sono? (minimo 2)\n";
+    clearCin();
+    cin>>giocatori;
   }
-  giocatori = 0;
-  }
-  while(giocatori<2);
   x=giocatori;
   while(giocatori>0){
     cout<<"inserisci il nome del giocatore:\n";
@@ -40,23 +39,31 @@ int main(){
     g.aggiungi_giocatore(nome);
     giocatori--;
   }
+  clearCin();
   cout<<"Premi invio per iniziare!\n";
   if(getc(stdin) != 13){
-  system("clear");
-}
+    system("clear");
+  }
   cout<<"Iniziamo!\n";
   c=g.Set_first(x);
   while(win==false){
     if(c->getstop()!=0){
       g.stampa_giocatore(c);
       c->setstop(c->getstop()-1);
-      cout<<"Devi rimanere fermo ancora: "<<c->getstop()<<" turni\n";
+      if(c->getstop()==1){
+        cout<<" Devi rimanere fermo ancora: "<<c->getstop()<<" turno\n";
+
+      }
+      else if(c->getstop()>1){
+        cout<<" Devi rimanere fermo ancora: "<<c->getstop()<<" turni\n";
+      }
+      else cout<<" Al prossimo turno potrai giocare di nuovo.\n";
     }
     else{
+      cout<<"è il turno di: ";
+      g.stampa_giocatore(c);
       cout<<"\npremi invio per tirare i dadi\n";
       if(getc(stdin) != 13){
-        cout<<"è il turno di: ";
-        g.stampa_giocatore(c);
         res = d1.Tira() + d2.Tira();
         cout<<res<<endl;
         l.SetGiocatore(c, res, n_caselle);
@@ -64,12 +71,12 @@ int main(){
         g.stampa_posizione();
       }
     }
-      if(c->getCasella()==n_caselle){
-        win=true;
-        break;
-      }
-      c=g.player_turn(c);
+    if(c->getCasella()==n_caselle){
+      win=true;
+      break;
     }
+    c=g.player_turn(c);
+  }
   winner=c->getNome();
   cout<<"Il vincitore è:"<<winner<<endl;
   return 0;
