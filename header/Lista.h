@@ -6,7 +6,7 @@ using namespace std;
 class Lista{
         private: Nodo *Start;
     			 Coda c;
-           deck card;
+				deck card;
         public:
 			Lista();
             ~Lista();

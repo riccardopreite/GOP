@@ -20,8 +20,17 @@ int main(){
   cout<<"Il tabellone è di: "<<n_caselle<<" caselle.\n";
   l.Visualizza();
   do{
-    cout<<"Quanti giocatori ci sono? (minimo 2)\n";
-    cin>>giocatori;
+	  try
+		{
+		cout<<"Quanti giocatori ci sono? (minimo 2)\n";
+		cin>>giocatori;
+		throw 1;
+	}
+  catch (int e)
+  {
+    cout << "Ma allora sei scemo\n";
+  }
+  giocatori = 0;
   }
   while(giocatori<2);
   x=giocatori;

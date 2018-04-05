@@ -15,17 +15,61 @@ void Lista::AddFront(Nodo *nuovo){
 
 //prendi random casella, vedi se in quelle adiacenti sono di diverso tipo,altrimenti ti blocchi
 
-
-
-
+// da 1 a 25 vuote, il resto mostri 
+//0 è vuota
+//1 è mezzo
+//2 è mostro
+//3 è oggetto
+//4 è luoghi
+//5 è pesca carta
 int Lista::GetType(){
-  int val = (rand() % 10 )+1;
-  if(c.Find(val)==1){
-    return GetType();
-  }
-  c.Shift(val);
-  return val;
+	int val = (rand()%100)+1;
+	if(val>=1 && val<=25){ //caselle vuote
+		if(c.Find(0)==1){
+			return GetType();
+		}
+		c.Shift(0);
+		return 0;
+	}
+	if(val>=26 && val<=34){ //caselle luoghi
+		if(c.Find(4)==1){
+			return GetType();
+		}
+		c.Shift(4);
+		return 4;
+	}
+	if(val>=35 && val<=42){ //caselle mezzi
+		if(c.Find(1)==1){
+			return GetType();
+		}
+		c.Shift(1);
+		return 1;
+	}
+	if(val>=43 && val<=78){ //caselle mostri
+		if(c.Find(2)==1){
+			return GetType();
+		}
+		c.Shift(2);
+		return 2;
+	}
+	if(val>=79 && val<=92){ //caselle oggetti
+		if(c.Find(3)==1){
+			return GetType();
+		}
+		c.Shift(3);
+		return 3;
+	}
+	if(val>=93 && val<=100){ //caselle pesca
+		if(c.Find(5)==1){
+			return GetType();
+		}
+		c.Shift(5);
+		return 5;
+	}
 }
+
+
+
 
 void Lista::Append(int n)
 {
