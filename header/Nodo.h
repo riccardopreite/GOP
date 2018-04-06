@@ -8,7 +8,7 @@ class Nodo{
       		   int num;
                Nodo *succ;
                int tip_cas;
-
+			   string nome_effetto;
       public: Nodo();
               ~Nodo();
               void SetType(int t);

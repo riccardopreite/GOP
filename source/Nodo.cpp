@@ -4,6 +4,7 @@ Nodo::Nodo(){
 	SetNome(NULL);
 	SetNum(0);
 	SetSucc(NULL);
+	nome_effetto = "";
 }
 
 Nodo::~Nodo(){

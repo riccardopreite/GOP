@@ -1,7 +1,12 @@
 #include <iostream>
 #include <time.h>
-#include <string>
 #include <ncurses.h>
+#include <limits>
+#include <fstream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "Type.h"
 #include "Persona.h"
 #include "Dado.h"
 #include"Coda.h"

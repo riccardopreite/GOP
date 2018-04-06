@@ -1,0 +1,12 @@
+DIRUPO
+Tira i dadi, se entrambi i dadi contengono numeri pari o dispari salti a piedi uniti il dirupo, oppure cadi e perdi un turno per risalire
+LANDE DI GHIACCIO
+Attraversi le lande a passo felpato se fai meno di quattro, altrimenti rompi la superficie, ti ghiacchi, e perdi il turno per riscaldarti
+SCORCIATOIA
+Hai trovato un bivio ma non sai qual e' la scorciatoia, se fai un tiro doppio la prendi e raddoppi iltiro, se no sbagli strada e perdi un turno per tornare indietro.
+VULCANO
+Perdere l'equilibrio è davvero pericoloso! Se fai 5 o meno cadi nella lava e muori.
+FORESTA DELLE ILLUSIONI
+Hai davanti a te mille strade diverse, se fai dispari torni indietro dello stesso punteggio del tiro, se fai pari avanzi.
+POZZO DELL'OBLIO
+Per evitare che i tuoi ricordi svaniscano non devi fare 3 o un suo multiplo se no ti dimentichi chi sei e stai fermo 3 turni.

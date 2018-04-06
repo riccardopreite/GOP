@@ -9,8 +9,11 @@ HEAD_DIR = 	header/
 OBJECT_DIR = object/
 all: GOP
 
-GOP:  GOP.o Giocatori.o Persona.o deck.o Dado.o Lista.o Coda.o Nodo.o
-	g++ $(OBJECT_DIR)GOP.o $(OBJECT_DIR)Giocatori.o $(OBJECT_DIR)Persona.o $(OBJECT_DIR)deck.o $(OBJECT_DIR)Dado.o $(OBJECT_DIR)Lista.o $(OBJECT_DIR)Coda.o $(OBJECT_DIR)Nodo.o $(FLAG_CC) GOP
+GOP:  GOP.o Giocatori.o Persona.o deck.o Dado.o Lista.o Coda.o Nodo.o Type.o
+	g++ $(OBJECT_DIR)GOP.o $(OBJECT_DIR)Giocatori.o $(OBJECT_DIR)Persona.o $(OBJECT_DIR)Type.o $(OBJECT_DIR)deck.o $(OBJECT_DIR)Dado.o $(OBJECT_DIR)Lista.o $(OBJECT_DIR)Coda.o $(OBJECT_DIR)Nodo.o $(FLAG_CC) GOP
+
+Type.o: $(HEAD_DIR)Type.h $(SRC_DIR)Type.cpp
+	g++ $(SRC_DIR)Type.cpp -c $(FLAG_CC) $(OBJECT_DIR)Type.o
 
 Persona.o: $(HEAD_DIR)Persona.h $(SRC_DIR)Persona.cpp
 	g++ $(SRC_DIR)Persona.cpp -c $(FLAG_CC) $(OBJECT_DIR)Persona.o
