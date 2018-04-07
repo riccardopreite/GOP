@@ -2,10 +2,6 @@
 //main di prova
 
 #include "header.h"
-void err_input(){
-  cin.clear();
-  cin.ignore(numeric_limits<streamsize>::max(), '\n');
-}
 int main(){
   int x=0,res,n_caselle,giocatori;
   bool win=false;
@@ -14,14 +10,15 @@ int main(){
   string nome;
   Giocatori g = Giocatori();
   Lista l=Lista();
-  l.get_caselle();
   Dado d1 = Dado();
   Dado d2 = Dado();
-  srand(static_cast<unsigned int>(time(NULL)));
+    srand(static_cast<unsigned int>(time(NULL)));
   n_caselle = (rand() % 50)+41;
   for(int i = 0; i <= n_caselle; i++ ){
     l.Append(i);
   }
+  l.set_cont(n_caselle);
+  //l.get_caselle();
   cout<<"Il tabellone è di: "<<n_caselle<<" caselle.\n";
   cout<<"\nQuanti giocatori ci sono? (minimo 2)\n";
 
@@ -29,7 +26,7 @@ int main(){
 
   while((!cin.good())||giocatori<2){
     cout<<"Quanti giocatori ci sono? (minimo 2)\n";
-    err_input();
+    d1.err_input();
     cin>>giocatori;
   }
   x=giocatori;
@@ -40,13 +37,14 @@ int main(){
     giocatori--;
   }
   l.Visualizza(n_caselle);
-  err_input();
+  d1.err_input();
   cout<<"\nPremi invio per iniziare!\n";
   if(getc(stdin) != 13){
     system("clear");
   }
   cout<<"Iniziamo!\n";
   c=g.Set_first(x);
+  c->setSconfiggi(true);
   while(win==false){
     if(c->getstop()!=0){
       g.stampa_giocatore(c);

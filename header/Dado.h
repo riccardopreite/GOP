@@ -9,5 +9,6 @@ class Dado{
 			       Dado();
              ~Dado();
 			       int Tira();
+             void err_input();
 
 };

@@ -10,6 +10,7 @@ Nodo::Nodo(){
 Nodo::~Nodo(){
 }
 
+
 void Nodo::SetNome(Persona *x) {
      nome_g=x;
 }

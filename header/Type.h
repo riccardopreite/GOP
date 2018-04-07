@@ -26,6 +26,9 @@ struct Luoghi{
 class Type{
 
 	private:
+		Dado d1;
+		Dado d2;
+		int lancio;
 		size_t n;
 		Luoghi luoghi[6]; 			//TipoCasella 1  1)nome, 2) info
 		Mezzi mezzi[3];  			//TipoCasella 2  1)nome mezzo
@@ -35,6 +38,8 @@ class Type{
 	public:
 		Type();
 		~Type();
+		void cavalca_mezzo(int x, Persona *g);
+		void combatti_mostro(int x,Persona *g);
 		void CaricaLuoghi();
 		void CaricaMezzi();
 		void CaricaMoastri();

@@ -5,27 +5,64 @@ Lista::Lista(){
   c = Coda(4);
   card=deck();
   player=Giocatori();
+  t=Type();
+  cont;
 }
 
 Lista::~Lista(){
 }
-void Lista::get_caselle(){
-  Type t=Type();
-}
 
+
+void Lista::set_cont(int n_caselle){
+  if(n_caselle>=40 && n_caselle<75){
+    this->cont=2;
+  }
+  else if(n_caselle>=75 && n_caselle<=90){
+    this->cont=3;
+  }
+  cout<<cont;
+}
 void Lista::AddFront(Nodo *nuovo){
   Start=nuovo;
 }
+#if 0
+prendi random casella, vedi se in quelle adiacenti sono di diverso tipo,altrimenti ti blocchi
 
-//prendi random casella, vedi se in quelle adiacenti sono di diverso tipo,altrimenti ti blocchi
+ da 1 a 25 vuote, il resto mostri
+0 PICCHIA IL PORTAPIZZE
+--------
+1 CAVALLO
+2 DRAGO              MEZZI
+3 CAROVANA
+-------
+4 GOBLIN
+5 LUPO
+6 ORCO
+7 TROLL
+8 SPIRITO            MOSTRI
+9 VAMPIRO
+10 BASILISCO
+11 MANGIANIME
+12 CAVALIERE NERO
+--------
+13 DIRUPO
+14 LANDE DI GHIACCIO
+15 SCORCIATOIA
+16 VULCANO                      LUOGHI
+17 FORESTA DELLE ILLUSIONI
+18 POZZO DELLOBLIO
+---------
+19 ALI DELLANGELO
+20 SPADA SCACCIADEMONI
+21 SPINTA DIVINA                OGGETTI
+22 INSTANCABILE
+23 LANCIO DELLEROE
+---------
+24 PESCA CARTE
 
-// da 1 a 25 vuote, il resto mostri
-//0 è vuota
-//1 è mezzo
-//2 è mostro
-//3 è oggetto
-//4 è luoghi
-//5 è pesca carta
+
+
+#endif
 int Lista::GetType(){
   int val = (rand()%100)+1;
   if(val>=1 && val<=25){ //caselle vuote
@@ -40,35 +77,123 @@ int Lista::GetType(){
       return GetType();
     }
     c.Shift(4);
-    return 4;
+    while(true){
+    int val = (rand()%600);
+        val=val/10;
+        if(val>=0 && val<=9){
+          return 13; //dirupo
+        }
+        else if(val>=10 && val<=19){
+          return 14; //lande
+        }
+        else if(val>=20 && val<=29){
+          return 15; //scorciatoi
+        }
+        else if(val>=30 && val<=39){
+          return 16; //vulcano
+        }
+        else if(val>=40 && val<=49){
+          return 17; //foresta
+        }
+        else if(val>=50 && val<=59){
+          return 18; //oblio
+        }
+     }
   }
   if(val>=35 && val<=42){ //caselle mezzi
     if(c.Find(1)==1){
       return GetType();
     }
     c.Shift(1);
-    return 1;
-  }
+while(true){
+  int val = (rand()%300);
+      val=val/10;
+      if(val>=0 && val<=9){
+        return 1; //cavallo
+      }
+      else if(val>=10 && val<=19){
+        return 2; //drago
+      }
+      else if(val>=20 && val<=29){
+        return 3; //carovana
+      }
+    }
+ }
   if(val>=43 && val<=78){ //caselle mostri
     if(c.Find(2)==1){
       return GetType();
     }
     c.Shift(2);
-    return 2;
+    while(true){
+    int val = (rand()%1400);
+        val=val/10;
+        if(val>=0 && val<=19){
+          return 4; //goblin
+        }
+        else if(val>=20 && val<=39){
+          return 5; //lupo
+        }
+        else if(val>=40 && val<=52){
+          return 6; //orco
+        }
+        else if(val>=53 && val<=65){
+          return 7; //troll
+        }
+        else if(val>=66 && val<=75){
+          return 8; //spirito
+        }
+        else if(val>=76 && val<=82){
+          return 9; //vampiro
+        }
+        else if(val>=83 && val<=89){
+          return 10; //basilisco
+        }
+        else if(val>=90 && val<=114){
+          if(cont>0){
+            this->cont--;    //mangianime
+            return 11;
+          }
+        }
+
+        else if(val>=115 && val<=139){
+          if(cont>0){
+            this->cont--;    //cavaliere nero
+            return 12;
+          }
+        }
+     }
   }
   if(val>=79 && val<=92){ //caselle oggetti
     if(c.Find(3)==1){
       return GetType();
     }
     c.Shift(3);
-    return 3;
-  }
+    while(true){
+      int val = (rand()%500);
+          val=val/10;
+          if(val>=0 && val<=9){
+            return 19; //ali
+          }
+          else if(val>=10 && val<=19){
+            return 20; //spada
+          }
+          else if(val>=20 && val<=29){
+            return 21; //spinta
+          }
+          else if(val>=30 && val<=39){
+            return 22; //INSTANCABILE
+          }
+          else if(val>=40 && val<=49){
+            return 23; //lancio
+          }
+        }
+       }
   if(val>=93 && val<=100){ //caselle pesca
     if(c.Find(5)==1){
       return GetType();
     }
     c.Shift(5);
-    return 5;
+    return 24;
   }
 }
 
@@ -76,10 +201,6 @@ int Lista::GetType(){
 /*String setCasellaNameEffect(){
 
 }*/
-
-
-
-
 
 
 
@@ -117,7 +238,7 @@ void Lista::Visualizza(int n_caselle){
     return;
   }
 
-  cout<<"I Valori sono: \n";
+  cout<<"\nIl tabellone è: \n";
 
   while((scor!=NULL)&&(n_caselle>=0)){
     res=0;
@@ -247,24 +368,69 @@ void Lista::get_effect(Persona *giocatore, Nodo *tmp){
   Nodo *tmp2=Start;
   switch(tmp->GetType()){
     case 0:
+    cout<<"Visto che non devi fare niente,almeno picchia il porta pizza!";
     break;
     case 1:
-    card.catch_card(giocatore);
+    t.cavalca_mezzo(0,giocatore);
     break;
-    #if 0
     case 2:
-    card.catch_card(giocatore);
+    t.cavalca_mezzo(1,giocatore);
     break;
     case 3:
-    card.catch_card(giocatore);
+    t.cavalca_mezzo(2,giocatore);
     break;
     case 4:
-    card.catch_card(giocatore);
+    t.combatti_mostro(0,giocatore);
     break;
     case 5:
-    card.catch_card(giocatore);
+    t.combatti_mostro(1,giocatore);
     break;
-    #endif
+    case 6:
+    t.combatti_mostro(2,giocatore);
+    break;
+    case 7:
+    t.combatti_mostro(3,giocatore);
+    break;
+    case 8:
+    t.combatti_mostro(4,giocatore);
+    break;
+    case 9:
+    t.combatti_mostro(5,giocatore);
+    break;
+    case 10:
+    t.combatti_mostro(6,giocatore);
+    break;
+    case 11:
+    t.combatti_mostro(7,giocatore);
+    break;
+    case 12:
+    t.combatti_mostro(8,giocatore);
+    break;
+    case 13:
+    break;
+    case 14:
+    break;
+    case 15:
+    break;
+    case 16:
+    break;
+    case 17:
+    break;
+    case 18:
+    break;
+    case 19:
+    break;
+    case 20:
+    break;
+    case 21:
+    break;
+    case 22:
+    break;
+    case 23:
+    break;
+    case 24:
+      card.catch_card(giocatore);
+    break;
   }
   return;
 }
@@ -308,3 +474,13 @@ void Lista::duello(Persona *giocatore, Persona* giocatore2,int n_caselle){
   }
 
 }
+
+#if 0
+void Lista::stampa_caselle(){
+Nodo*tmp= Start;
+while(tmp!=NULL){
+cout<<"effect: "<<tmp->GetType()<<endl;
+tmp=tmp->GetSucc();
+}
+}
+#endif

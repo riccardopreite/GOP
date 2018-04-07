@@ -6,9 +6,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "Type.h"
-#include "Persona.h"
 #include "Dado.h"
+#include "Persona.h"
+#include "Type.h"
 #include"Coda.h"
 #include "deck.h"
 #include "Giocatori.h"
