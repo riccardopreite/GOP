@@ -13,6 +13,60 @@ Giocatori::Giocatori(){
 }
 Giocatori::~Giocatori(){}
 
+
+Persona *Giocatori::scegli_primo(){
+	Persona *tmp = head;
+    Dado d1 = Dado();
+	int lancio,x;
+	if(tmp == NULL){
+		return NULL;
+	}
+	while(tmp != NULL){
+		if(tmp->getValDadoInit() != -1){
+			cout<<"\nTocca al giocatore "<<tmp->getNome()<<"\nPremi invio per tirare il dado\n";
+			lancio = d1.Tira();
+			cout<<"Hai totalizzato: "<<lancio;
+			tmp->setValDadoInit(lancio);
+		}
+		tmp = tmp->getNext();
+	}
+		tmp = head;
+		Persona *tmp2 = tmp;
+		tmp = tmp->getNext();
+		bool check = false;
+			while(tmp != NULL){
+				if(tmp->getValDadoInit() != -1){
+					if(tmp->getValDadoInit() > tmp2->getValDadoInit()){
+						tmp2->setValDadoInit(-1);
+						tmp2 = tmp;
+					}
+					else if(tmp->getValDadoInit() == tmp2->getValDadoInit()){
+					}
+					else{
+						tmp->setValDadoInit(-1);
+					}
+				}
+				tmp = tmp->getNext();
+			}
+
+			 x =0;
+			tmp = head;
+
+			while(tmp!= NULL){
+				if(tmp->getValDadoInit() != -1){
+					x = x +1;
+				}
+				tmp = tmp->getNext();
+			}
+			if( x == 1){
+				cout<<"\nInizia "<<tmp2->getNome();
+				next = tmp2;
+				return next;
+			}else{
+				return scegli_primo();
+			}
+}
+
 void Giocatori::aggiungi_giocatore(string nome){
   Persona *tmp = head;
   Persona *tmp2;
@@ -64,7 +118,7 @@ Persona *Giocatori::return_head(){
   return(head);
 }
 
-
+#if 0
 Persona *Giocatori::Set_first(int n_giocatori){
   int first;
   Persona *tmp=head;
@@ -81,6 +135,7 @@ Persona *Giocatori::Set_first(int n_giocatori){
   cout<<"\nInizia "<<tmp->getNome()<<endl;
   return tmp;
 }
+#endif
 Persona *Giocatori::player_turn(Persona *c){
   Persona *tmp= c;
   if(tmp->getNext()==NULL){

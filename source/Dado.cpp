@@ -2,7 +2,8 @@
 
 
 Dado::Dado(){
-
+  res_1=0;
+  res_2=0;
 }
 Dado::~Dado(){
 
@@ -13,9 +14,21 @@ void Dado::err_input(){
 }
 
 int Dado::Tira(){
-	int res;
-	//srand(static_cast<unsigned int>(time(NULL)));
-	res=((rand() % 500)+1);
-	res=(res/100)+1;
-	return res;
+   res_1,res_2;
+  if(getc(stdin) != 13){
+    res_1=((rand() % 500)+1);
+    res_1=(res_1/100)+1;
+    res_2=((rand() % 500)+1);
+    res_2=(res_2/100)+1;
+    res_1=res_1+res_2;
+  }
+  return res_1;
+}
+
+int Dado::Tira_2(){
+  if(getc(stdin) != 13){
+    res_1=((rand() % 500)+1);
+    res_1=(res_1/100)+1;
+  }
+  return res_1;
 }

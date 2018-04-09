@@ -115,10 +115,10 @@ void deck::effect_0(Persona *g){
   cout<<g->getNome();
   printf(" Oh no! Hai incontrato uno stregone.\n Se fai più di 6 puoi ritirare i dadi, altrimenti rimani fermo due turni\n" );    //parametro: puntatore al giocatore passato per indirizzo, modifico i campi in base all'effetto
 
-  lancio=d1.Tira() + d2.Tira();
+  lancio=d1.Tira();
   cout<<"Hai fatto: "<<lancio<<endl;
   if(lancio>6){
-    lancio=d1.Tira() + d2.Tira();
+    lancio=d1.Tira();
     cout<<g->getNome()<<" Vai avanti di: "<<lancio<<" caselle.\n";
     g->setCasella(g->getCasella()+lancio);
   }
@@ -131,7 +131,7 @@ void deck::effect_0(Persona *g){
 void deck::effect_1(Persona *g){
   cout<<g->getNome();
   printf(" Una ninfa esce dall'acqua e ti regala la possibilità di rilanciare i dadi.\n" );
-  lancio=d1.Tira() + d2.Tira();
+  lancio=d1.Tira();
   cout<<"Prosegui di altre: "<<lancio<<" caselle"<<endl;
   g->setCasella(g->getCasella()+lancio);
   return;
@@ -139,7 +139,7 @@ void deck::effect_1(Persona *g){
 void deck::effect_2(Persona *g){
   cout<<g->getNome();
   printf(" Rilancia i dadi e vai avanti\n" );
-  lancio=d1.Tira() + d2.Tira();
+  lancio=d1.Tira();
   cout<<"Vai avanti di: "<<lancio<<" caselle"<<endl;
 
   g->setCasella(g->getCasella()+lancio);
@@ -148,7 +148,7 @@ void deck::effect_2(Persona *g){
 void deck::effect_3(Persona *g){
   cout<<g->getNome();
   printf(" Rilancia i dadi e vai indietro\n" );
-  lancio=d1.Tira() + d2.Tira();
+  lancio=d1.Tira();
   cout<<"Vai indietro di: "<<lancio<<" caselle"<<endl;
 
   g->setCasella(g->getCasella()-lancio);
@@ -169,7 +169,7 @@ void deck::effect_5(Persona *g){
 void deck::effect_6(Persona *g){
   cout<<g->getNome();
   printf(" Sei caduto nel pozzo e ti sei rotto una gamba!\n Fai almeno 5 per guarire altrimenti rimani lì per due turni.\n" );
-  lancio=d1.Tira() + d2.Tira();
+  lancio=d1.Tira();
   cout<<"Hai fatto: "<<lancio<<endl;
 
   if(lancio<5){

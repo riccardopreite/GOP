@@ -7,7 +7,6 @@
 
 #ifndef GIOCATORI_H_
 #define GIOCATORI_H_
-#include <string>
 using namespace std;
 
 class Giocatori{
@@ -17,6 +16,7 @@ private:
 public:
 	Giocatori();
 	~Giocatori();
+    Persona *scegli_primo();
 	void aggiungi_giocatore(string nome);
 	void stampa_giocatore(Persona *c);
 	void stampa_posizione();

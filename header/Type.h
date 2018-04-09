@@ -3,19 +3,14 @@ using namespace std;
 struct Mostri{
 	string nome;
 	int nbattere;
-	int cont;
 };
 
 struct Mezzi{
 	string nome;
-	int cont;
 };
 
 struct Oggetti{
 	string nome;
-	string operatore;
-	int navanti;
-	int cont;
 };
 
 struct Luoghi{
@@ -27,7 +22,6 @@ class Type{
 
 	private:
 		Dado d1;
-		Dado d2;
 		int lancio;
 		size_t n;
 		Luoghi luoghi[6]; 			//TipoCasella 1  1)nome, 2) info
@@ -38,6 +32,8 @@ class Type{
 	public:
 		Type();
 		~Type();
+		void raccogli_oggetto(int x, int lancio, Persona *g);
+		void esplora_luogo(int x, Persona *g);
 		void cavalca_mezzo(int x, Persona *g);
 		void combatti_mostro(int x,Persona *g);
 		void CaricaLuoghi();

@@ -1,8 +1,6 @@
 #include "header.h"
-
 Type::Type(){
   d1=Dado();
-  d2=Dado();
   CaricaMostri();
   CaricaOgettiMagici();
   CaricaMezzi();
@@ -12,14 +10,115 @@ Type::Type(){
 Type::~Type(){
 }
 
+void Type::esplora_luogo(int x, Persona* g){
+  int parz=0;
+  cout<<g->getNome()<<" Hai trovato: "<<luoghi[x].nome<<endl<<luoghi[x].info<<endl;
+  if(x==2){
+    parz=d1.Tira_2();
+    cout<<"Con il primo dado hai fatto: "<<parz<<". Tira di nuovo!\n";
+    lancio=d1.Tira_2();
+    cout<<"Con il Secondo dado hai fatto: "<<lancio<<".\n";
+    if(lancio==parz){
+      cout<<"Hai fatto doppio! Raddoppi il tuo risultato.\n";
+      lancio=lancio+parz;
+      g->setCasella(g->getCasella()+lancio);
+    }
+    else {
+      cout<<" Ops. Hai sbagliato strada! Perdi un turno per tornare indietro.\n";
+      g->setstop(g->getstop()+1);
+    }
+    return;
+  }
+  lancio=d1.Tira();
+  switch (x) {
+    case 0:
+    if(lancio%2==0){
+      cout<<"Totalizzando "<<lancio<<" hai saltato il dirupo! Avanzi di una casella.\n";
+      g->setCasella(g->getCasella()+1);
+    }
+    else if(lancio%2!=0){
+      cout<<"Hai fatto solo: "<<lancio<<" Oh no! Sei caduto nel dirupo! Per risalire impieghi un turno!!\n";
+      g->setstop(g->getstop()+1);
+    }
+    break;
+    case 1:
+    cout<<"Hai fatto: "<<lancio;
+    if(lancio<4){
+      cout<<"Stai attraversando pian piano il ghiaccio. Sei riuscito a non cadere.\n";
+      g->setCasella(g->getCasella()+1);
+    }
+    else{
+      cout<<" Ops. Hai il passo troppo pesante e rompi il ghiaccio! Perdi il turno per scaldarti.\n";
+      g->setstop(g->getstop()+1);
+    }
+    break;
+    case 3:
+    if(lancio<=5){
+      cout<<"Con "<<lancio<<" Sei caduto nel vulcano! Ritorna all'inizio!\n";
+      g->setCasella(0);
+    }
+    else {
+      cout<<"Con "<<lancio<<" Sei riuscito a superare il vulcano senza caderci. Hai avuto fortuna questa volta!\n";
+    }
+    break;
+
+    case 4:
+    if (lancio%2==0){
+      cout<<"Non ti sei perso all'interno della foresta avanzi di: "<<lancio<<endl;
+      g->setCasella(g->getCasella()+lancio);
+    }
+    else {
+      cout<<"La foresta ti ha confuso torni indietro di "<<lancio<<endl;
+    }
+    g->setCasella(g->getCasella()-lancio);
+    break;
+    case 5:
+    if(lancio%3==0){
+      cout<<"Facendo "<<lancio<<" il pozzo ha divorato i tuoi ricordi. Non capisci più dove ti trovi e cosa stai facendo. Perdi tre turni per recuperare la memoria.\n";
+      g->setstop(g->getstop()+3);
+    }
+    else {
+      cout<<"Facendo "<<lancio<<" sei scampato alla potenza del pozzo dell'oblio, la tua memoria rimane intatta.\n";
+    }
+    break;
+  }
+}
+
+void Type::raccogli_oggetto(int x, int lancio, Persona *g){
+
+  cout<<g->getNome()<<" hai trovato: "<<oggettiMagici[x].nome;
+  switch (x) {
+    case 0:
+    cout<<"Vai avanti di altre 5 caselle!\n";
+    g->setCasella(g->getCasella()+5);
+    break;
+    case 1:
+    cout<<"Vai avanti di altre 3 caselle!\n";
+    g->setCasella(g->getCasella()+3);
+    break;
+    case 2:
+    cout<<"Moltiplica il tuo risultato x 2!\n";
+    g->setCasella(g->getCasella()+lancio);
+    break;
+    case 3:
+    cout<<"Vai avanti di altre 2 caselle!\n";
+    g->setCasella(g->getCasella()+2);
+    break;
+    case 4:
+    cout<<"Vai avanti di altre 3 caselle!\n";
+    g->setCasella(g->getCasella()+3);
+    break;
+  }
+}
+
+
 void Type::cavalca_mezzo(int x, Persona *g){
   if(x == 0){
     cout<<g->getNome()<<" Hai rubato un cavallo."<<endl;
+    sleep(1);
     cout<<"Oh no ti hanno scoperto! Lancia due dadi. Se mantieni la calma e fai meno di 9, riesci a raddoppiare il risultato fuggendo.\nAltrimenti cadi dalla fretta, il contadino ti picchia e avanzi di una casella strisciando\n";
-    if(getc(stdin) != 13){
-      lancio=d1.Tira()+d2.Tira();
-      cout<<"Hai fatto: "<<lancio<<endl;
-    }
+    lancio=d1.Tira();
+    cout<<"Hai fatto: "<<lancio<<endl;
     if(lancio<9){
       g->setCasella(g->getCasella()+(lancio*2));
       cout<<"\nVai avanti di: "<<lancio*2<<" caselle\n";
@@ -31,11 +130,12 @@ void Type::cavalca_mezzo(int x, Persona *g){
   }
   else if(x == 1){
     cout<<g->getNome()<<" Hai trovato un drago. Per domarlo tira tre volte il dado e totalizza almeno 15 e avanzi volando di 25 caselle.\nAltrimenti scappi a gambe levate e vai avanti di una casella"<<endl;
-    if(getc(stdin) != 13){
-      lancio=d1.Tira()+d2.Tira();
-      lancio=lancio+d1.Tira();
-      cout<<"Hai fatto: "<<lancio<<endl;
-    }
+    lancio=d1.Tira();
+    cout<<"Primo lancio: "<<lancio<<"\nOra tira per la seconda volta.\n";
+    lancio=lancio+d1.Tira();
+    cout<<"Secondo lancio: "<<lancio<<"\nOra tira per la terza volta.\n";
+    lancio=lancio+d1.Tira();
+    cout<<"Hai fatto: "<<lancio<<endl;
     if(lancio>=15){
       cout<<"\nHai domato il Drago! Adesso puoi cavalcarlo!\n";
       g->setCasella(g->getCasella()+25);
@@ -46,12 +146,9 @@ void Type::cavalca_mezzo(int x, Persona *g){
     }
   }
   else if(x==2){
-    cout<<"Uno straniero ti offre un passaggio sulla sua carovana ad una condizione, tira due dadi,se totalizzi un punteggio uguale a 2,5 o 10 ti accompogna per 15 caselle. Altrimenti continui a piedi.\n";
-    if(getc(stdin) != 13){
-      lancio=d1.Tira()+d2.Tira();
-      lancio=lancio+d1.Tira();
-      cout<<"Hai fatto: "<<lancio<<endl;
-    }
+    cout<<g->getNome()<<" Uno straniero ti offre un passaggio sulla sua carovana ad una condizione, tira due dadi,se totalizzi un punteggio uguale a 2,5 o 10 ti accompogna per 15 caselle. Altrimenti continui a piedi.\n";
+    lancio=d1.Tira();
+    cout<<"Hai fatto: "<<lancio<<endl;
     if((lancio==2) || (lancio==5) || (lancio==10)){
       cout<<"\nLo straniero ti accompagna per 15 caselle.\n";
       g->setCasella(g->getCasella()+15);
@@ -83,16 +180,14 @@ void Type::combatti_mostro(int x,Persona *g){
       }
     }
   }
-  if(getc(stdin) != 13){
-    lancio=d1.Tira()+d2.Tira();
-    cout<<"Hai fatto: "<<lancio<<endl;
-    if (lancio>mostri[x].nbattere){
-      cout<<"Complimenti hai sconfitto quel mostro! Non ti tocca tornare all'inizio.\n";
-    }
-    else{
-      cout<<"Oh no! "<<g->getNome()<< " non sei riuscito a sconfiggere il mostro, devi tornare all'inizio!\n";
-      g->setCasella(0);
-    }
+  lancio=d1.Tira();
+  cout<<"Hai fatto: "<<lancio<<endl;
+  if (lancio>mostri[x].nbattere){
+    cout<<"Complimenti hai sconfitto quel mostro! Non ti tocca tornare all'inizio.\n";
+  }
+  else{
+    cout<<"Oh no! "<<g->getNome()<< " non sei riuscito a sconfiggere il mostro, devi tornare all'inizio!\n";
+    g->setCasella(0);
   }
 }
 
@@ -108,7 +203,6 @@ void Type::CaricaMostri(){
     mostri[x].nome = line;
     getline(&line, &n, fin);
     mostri[x].nbattere = atoi(line);
-    mostri[x].cont=0;
     x++;
   }
   fclose(fin);
@@ -125,11 +219,6 @@ void Type::CaricaOgettiMagici(){
   {
     getline(&line, &n, fin);
     oggettiMagici[x].nome = line;
-    getline(&line, &n, fin);
-    oggettiMagici[x].operatore = line;
-    getline(&line, &n, fin);
-    oggettiMagici[x].navanti= atoi(line);
-    oggettiMagici[x].cont = 0;
     x++;
   }
   fclose(fin);
@@ -145,7 +234,6 @@ void Type::CaricaMezzi(){
   while (x<3){
     getline(&line, &n, fin);
     mezzi[x].nome = line;
-    mezzi[x].cont = 0;
     x++;
   }
   fclose(fin);

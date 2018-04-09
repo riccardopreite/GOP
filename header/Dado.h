@@ -5,10 +5,14 @@ using namespace std;
 
 
 class Dado{
-        public:
-			       Dado();
-             ~Dado();
-			       int Tira();
-             void err_input();
+private:
+  int res_1;
+  int res_2;
+public:
+  Dado();
+  ~Dado();
+  int Tira();
+  int Tira_2();
+  void err_input();
 
 };

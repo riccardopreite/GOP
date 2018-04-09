@@ -6,7 +6,7 @@ Lista::Lista(){
   card=deck();
   player=Giocatori();
   t=Type();
-  cont;
+  cont=0;
 }
 
 Lista::~Lista(){
@@ -20,7 +20,6 @@ void Lista::set_cont(int n_caselle){
   else if(n_caselle>=75 && n_caselle<=90){
     this->cont=3;
   }
-  cout<<cont;
 }
 void Lista::AddFront(Nodo *nuovo){
   Start=nuovo;
@@ -29,7 +28,7 @@ void Lista::AddFront(Nodo *nuovo){
 prendi random casella, vedi se in quelle adiacenti sono di diverso tipo,altrimenti ti blocchi
 
 <<<<<<< HEAD
- da 1 a 25 vuote, il resto mostri
+da 1 a 25 vuote, il resto mostri
 0 PICCHIA IL PORTAPIZZE
 --------
 1 CAVALLO
@@ -88,27 +87,27 @@ int Lista::GetType(){
     }
     c.Shift(4);
     while(true){
-    int val = (rand()%600);
-        val=val/10;
-        if(val>=0 && val<=9){
-          return 13; //dirupo
-        }
-        else if(val>=10 && val<=19){
-          return 14; //lande
-        }
-        else if(val>=20 && val<=29){
-          return 15; //scorciatoi
-        }
-        else if(val>=30 && val<=39){
-          return 16; //vulcano
-        }
-        else if(val>=40 && val<=49){
-          return 17; //foresta
-        }
-        else if(val>=50 && val<=59){
-          return 18; //oblio
-        }
-     }
+      int val = (rand()%600);
+      val=val/10;
+      if(val>=0 && val<=9){
+        return 13; //dirupo
+      }
+      else if(val>=10 && val<=19){
+        return 14; //lande
+      }
+      else if(val>=20 && val<=29){
+        return 15; //scorciatoi
+      }
+      else if(val>=30 && val<=39){
+        return 16; //vulcano
+      }
+      else if(val>=40 && val<=49){
+        return 17; //foresta
+      }
+      else if(val>=50 && val<=59){
+        return 18; //oblio
+      }
+    }
     return 4;
   }
   if(val>=35 && val<=42){ //caselle mezzi
@@ -116,8 +115,8 @@ int Lista::GetType(){
       return GetType();
     }
     c.Shift(1);
-while(true){
-  int val = (rand()%300);
+    while(true){
+      int val = (rand()%300);
       val=val/10;
       if(val>=0 && val<=9){
         return 1; //cavallo
@@ -129,81 +128,82 @@ while(true){
         return 3; //carovana
       }
     }
- }
+  }
   if(val>=43 && val<=78){ //caselle mostri
     if(c.Find(2)==1){
       return GetType();
     }
     c.Shift(2);
-      while(true){
-    int val = (rand()%1400);
-        val=val/10;
-        if(val>=0 && val<=19){
-          return 4; //goblin
+    while(true){
+      int val = (rand()%1400);
+      val=val/10;
+      if(val>=0 && val<=19){
+        return 4; //goblin
+      }
+      else if(val>=20 && val<=39){
+        return 5; //lupo
+      }
+      else if(val>=40 && val<=52){
+        return 6; //orco
+      }
+      else if(val>=53 && val<=65){
+        return 7; //troll
+      }
+      else if(val>=66 && val<=75){
+        return 8; //spirito
+      }
+      else if(val>=76 && val<=82){
+        return 9; //vampiro
+      }
+      else if(val>=83 && val<=89){
+        return 10; //basilisco
+      }
+      else if(val>=90 && val<=114){
+        if(cont>0){
+          cont--;     //mangianime
+          return 11;
         }
-        else if(val>=20 && val<=39){
-          return 5; //lupo
-        }
-        else if(val>=40 && val<=52){
-          return 6; //orco
-        }
-        else if(val>=53 && val<=65){
-          return 7; //troll
-        }
-        else if(val>=66 && val<=75){
-          return 8; //spirito
-        }
-        else if(val>=76 && val<=82){
-          return 9; //vampiro
-        }
-        else if(val>=83 && val<=89){
-          return 10; //basilisco
-        }
-        else if(val>=90 && val<=114){
-          if(cont>0){
-            this->cont--;    //mangianime
-            return 11;
-          }
-        }
+      }
 
-        else if(val>=115 && val<=139){
-          if(cont>0){
-            this->cont--;    //cavaliere nero
-            return 12;
-          }
+      else if(val>=115 && val<=139){
+        if(cont>0){
+          cont--;       //cavaliere nero
+          return 12;
         }
-     }
-     }
+      }
+    }
+  }
   if(val>=79 && val<=92){ //caselle oggetti
     if(c.Find(3)==1){
       return GetType();
     }
     c.Shift(3);    while(true){
       int val = (rand()%500);
-          val=val/10;
-          if(val>=0 && val<=9){
-            return 19; //ali
-          }
-          else if(val>=10 && val<=19){
-            return 20; //spada
-          }
-          else if(val>=20 && val<=29){
-            return 21; //spinta
-          }
-          else if(val>=30 && val<=39){
-            return 22; //INSTANCABILE
-          }
-          else if(val>=40 && val<=49){
-            return 23; //lancio
-          }
-        }
-       }
-       if(val>=93 && val<=100){ //caselle pesca
+      val=val/10;
+      if(val>=0 && val<=9){
+        return 19; //ali
+      }
+      else if(val>=10 && val<=19){
+        return 20; //spada
+      }
+      else if(val>=20 && val<=29){
+        return 21; //spinta
+      }
+      else if(val>=30 && val<=39){
+        return 22; //INSTANCABILE
+      }
+      else if(val>=40 && val<=49){
+        return 23; //lancio
+      }
+    }
+  }
+  if(val>=93 && val<=100){ //caselle pesca
     if(c.Find(5)==1){
       return GetType();
     }
-    c.Shift(5);    return 24;
-   }
+    c.Shift(5);
+       return 24;
+  }
 }
 
 
@@ -264,7 +264,7 @@ void Lista::Visualizza(int n_caselle){
             cout<<"    ";
           }
         }
-      else if(res<=9){
+        else if(res<=9){
           cout<<"    ";
         }
         else{
@@ -360,7 +360,7 @@ void Lista::SetGiocatore(Persona *giocatore, int n, int n_caselle){
   }
   if(tmp->GetNome() == NULL){
     tmp->SetNome(giocatore);
-    get_effect(giocatore, tmp);
+    get_effect(giocatore, tmp,n);
     if(tmp->GetNum() != giocatore->getCasella()){
       Lista::SetGiocatore(giocatore, 0, n_caselle );
     }
@@ -373,12 +373,12 @@ void Lista::SetGiocatore(Persona *giocatore, int n, int n_caselle){
   }
 }
 
-void Lista::get_effect(Persona *giocatore, Nodo *tmp){
+void Lista::get_effect(Persona *giocatore, Nodo *tmp, int n){
   Persona *giocatore2;
   Nodo *tmp2=Start;
   switch(tmp->GetType()){
     case 0:
-    cout<<"Visto che non devi fare niente,almeno picchia il porta pizza!";
+    cout<<"\nVisto che non devi fare niente,almeno picchia il porta pizza!";
     break;
     case 1:
     t.cavalca_mezzo(0,giocatore);
@@ -417,29 +417,40 @@ void Lista::get_effect(Persona *giocatore, Nodo *tmp){
     t.combatti_mostro(8,giocatore);
     break;
     case 13:
+    t.esplora_luogo(0,giocatore);
     break;
     case 14:
+    t.esplora_luogo(1,giocatore);
     break;
     case 15:
+    t.esplora_luogo(2,giocatore);
     break;
     case 16:
+    t.esplora_luogo(3,giocatore);
     break;
     case 17:
+    t.esplora_luogo(4,giocatore);
     break;
     case 18:
+    t.esplora_luogo(5,giocatore);
     break;
     case 19:
+    t.raccogli_oggetto(0,n, giocatore);
     break;
     case 20:
+     t.raccogli_oggetto(1,n, giocatore);
     break;
     case 21:
+    t.raccogli_oggetto(2,n, giocatore);
     break;
     case 22:
+    t.raccogli_oggetto(3,n, giocatore);
     break;
     case 23:
+     t.raccogli_oggetto(4,n, giocatore);
     break;
     case 24:
-      card.catch_card(giocatore);
+    card.catch_card(giocatore);
     break;
   }
   return;
@@ -458,15 +469,11 @@ void Lista::duello(Persona *giocatore, Persona* giocatore2,int n_caselle){
   Nodo *tmp2 = Start;
   while(duello==true){
     cout<<"E' ora del duello!\n"<<giocatore->getNome()<<" Lancia i dadi!\n";
-    if(getc(stdin) != 13){
-      res_duello= d1.Tira() + d2.Tira();
+      res_duello= d1.Tira();
       cout<<"Hai fatto: "<<res_duello<<endl;
-    }
     cout<<giocatore2->getNome()<<" Lancia i dadi!\n"<<endl;
-    if(getc(stdin) != 13){
-      res_duello_2= d1.Tira() + d2.Tira();
+      res_duello_2= d1.Tira();
       cout<<"Hai fatto: "<<res_duello_2<<endl;
-    }
     if(res_duello>res_duello_2){
       cout<<"Ha vinto "<<giocatore->getNome()<<endl;
       duello=false;
@@ -484,13 +491,12 @@ void Lista::duello(Persona *giocatore, Persona* giocatore2,int n_caselle){
   }
 
 }
-
 #if 0
 void Lista::stampa_caselle(){
-Nodo*tmp= Start;
-while(tmp!=NULL){
-cout<<"effect: "<<tmp->GetType()<<endl;
-tmp=tmp->GetSucc();
-}
+  Nodo*tmp= Start;
+  while(tmp!=NULL){
+    cout<<"effect: "<<tmp->GetType()<<endl;
+    tmp=tmp->GetSucc();
+  }
 }
 #endif

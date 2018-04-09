@@ -7,7 +7,6 @@
 
 #ifndef PERSONA_H_
 #define PERSONA_H_
-#include <string>
 using namespace std;
 
 class Persona{
@@ -18,8 +17,11 @@ private:
 	string _colore;
 	int stop;
 	Persona *next;
+	int val_dado_init;
 public:
 	Persona();
+    void setValDadoInit(int n);
+    int getValDadoInit();
 	void setNome(string n);
 	string getNome();
 	void setCasella(int casella);

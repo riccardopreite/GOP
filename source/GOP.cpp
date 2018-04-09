@@ -12,14 +12,13 @@ int main(){
   Giocatori g = Giocatori();
   Lista l=Lista();
   Dado d1 = Dado();
-  Dado d2 = Dado();
   srand(static_cast<unsigned int>(time(NULL)));
   n_caselle = (rand() % 50)+41;
+  l.set_cont(n_caselle);
   for(int i = 0; i <= n_caselle; i++ ){
     l.Append(i);
   }
-  l.set_cont(n_caselle);
-  //l.get_caselle();
+  //l.stampa_caselle();
   cout<<"Il tabellone è di: "<<n_caselle<<" caselle.\n";
   cout<<"\nQuanti giocatori ci sono? (minimo 2)\n";
 
@@ -44,7 +43,7 @@ int main(){
     system("clear");
   }
   cout<<"Iniziamo!\n";
-  c=g.Set_first(x);
+  c=g.scegli_primo();
   while(win==false){
     if(c->getstop()!=0){
       g.stampa_giocatore(c);
@@ -59,17 +58,18 @@ int main(){
       else cout<<" Al prossimo turno potrai giocare di nuovo.\n";
     }
     else{
-      cout<<"è il turno di: ";
+      cout<<"\nè il turno di: ";
       g.stampa_giocatore(c);
       cout<<"\npremi invio per tirare i dadi\n";
-      if(getc(stdin) != 13){
-        system("clear");
-        res = d1.Tira() + d2.Tira();
+        res = d1.Tira();
         cout<<res<<endl;
         l.SetGiocatore(c, res, n_caselle);
+        g.stampa_posizione();
+        l.Visualizza(n_caselle);
+        cout<<"\nPremi invio per passare il turno.\n";
+        if(getc(stdin) != 13){
+        system("clear");
       }
-      l.Visualizza(n_caselle);
-      g.stampa_posizione();
     }
     if(c->getCasella()==n_caselle){
       win=true;
