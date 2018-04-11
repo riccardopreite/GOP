@@ -1,6 +1,6 @@
 #include "header.h"
 
-Lista::Lista(){
+Tabellone::Tabellone(){
   Start=NULL;
   c = Coda(4);
   card=deck();
@@ -9,11 +9,11 @@ Lista::Lista(){
   cont=0;
 }
 
-Lista::~Lista(){
+Tabellone::~Tabellone(){
 }
 
 
-void Lista::set_cont(int n_caselle){
+void Tabellone::set_cont(int n_caselle){
   if(n_caselle>=40 && n_caselle<75){
     this->cont=2;
   }
@@ -21,7 +21,7 @@ void Lista::set_cont(int n_caselle){
     this->cont=3;
   }
 }
-void Lista::AddFront(Nodo *nuovo){
+void Tabellone::AddFront(Nodo *nuovo){
   Start=nuovo;
 }
 #if 0
@@ -72,7 +72,7 @@ da 1 a 25 vuote, il resto mostri
 //3 è oggetto
 //4 è luoghi
 //5 è pesca carta
-int Lista::GetType(){
+int Tabellone::GetType(){
   int val = (rand()%100)+1;
   if(val>=1 && val<=25){ //caselle vuote
     if(c.Find(0)==1){
@@ -215,7 +215,7 @@ int Lista::GetType(){
 
 
 
-void Lista::Append(int n)
+void Tabellone::Append(int n)
 {
   Nodo *nuovo = new Nodo;
   nuovo->SetSucc(NULL);
@@ -238,13 +238,13 @@ void Lista::Append(int n)
   scor->SetSucc(nuovo);
 }
 
-void Lista::Visualizza(int n_caselle){
+void Tabellone::Visualizza(int n_caselle){
   Nodo *scor=Start;
   Nodo *tmp = Start;
   Persona *giocatore=player.return_head();
   int res=0,caselle_2;
   if(Start==NULL){
-    cout<<"Non ci sono valori nella lista\n";
+    cout<<"Non ci sono valori nella Tabellone\n";
     return;
   }
 
@@ -330,7 +330,7 @@ void Lista::Visualizza(int n_caselle){
   }
 }
 
-void Lista::SetGiocatore(Persona *giocatore, int n, int n_caselle){
+void Tabellone::SetGiocatore(Persona *giocatore, int n, int n_caselle){
   int scarto;
   if(Start == NULL){
     return;
@@ -362,7 +362,7 @@ void Lista::SetGiocatore(Persona *giocatore, int n, int n_caselle){
     tmp->SetNome(giocatore);
     get_effect(giocatore, tmp,n);
     if(tmp->GetNum() != giocatore->getCasella()){
-      Lista::SetGiocatore(giocatore, 0, n_caselle );
+      Tabellone::SetGiocatore(giocatore, 0, n_caselle );
     }
   }
   else{
@@ -373,7 +373,7 @@ void Lista::SetGiocatore(Persona *giocatore, int n, int n_caselle){
   }
 }
 
-void Lista::get_effect(Persona *giocatore, Nodo *tmp, int n){
+void Tabellone::get_effect(Persona *giocatore, Nodo *tmp, int n){
   Persona *giocatore2;
   Nodo *tmp2=Start;
   switch(tmp->GetType()){
@@ -457,7 +457,7 @@ void Lista::get_effect(Persona *giocatore, Nodo *tmp, int n){
 }
 
 
-void Lista::duello(Persona *giocatore, Persona* giocatore2,int n_caselle){
+void Tabellone::duello(Persona *giocatore, Persona* giocatore2,int n_caselle){
   bool duello=true;
   if(giocatore->getCasella()==0){
     return;
@@ -492,7 +492,7 @@ void Lista::duello(Persona *giocatore, Persona* giocatore2,int n_caselle){
 
 }
 #if 0
-void Lista::stampa_caselle(){
+void Tabellone::stampa_caselle(){
   Nodo*tmp= Start;
   while(tmp!=NULL){
     cout<<"effect: "<<tmp->GetType()<<endl;

@@ -10,7 +10,7 @@ int main(){
   Persona *c;
   string nome;
   Giocatori g = Giocatori();
-  Lista l=Lista();
+  Tabellone l=Tabellone();
   Dado d1 = Dado();
   srand(static_cast<unsigned int>(time(NULL)));
   n_caselle = (rand() % 50)+41;

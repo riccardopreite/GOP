@@ -9,8 +9,8 @@ HEAD_DIR = 	header/
 OBJECT_DIR = object/
 all: GOP
 
-GOP:  GOP.o Giocatori.o Persona.o deck.o Dado.o Lista.o Coda.o Nodo.o Type.o
-	g++ $(OBJECT_DIR)GOP.o $(OBJECT_DIR)Giocatori.o $(OBJECT_DIR)Persona.o $(OBJECT_DIR)Type.o $(OBJECT_DIR)deck.o $(OBJECT_DIR)Dado.o $(OBJECT_DIR)Lista.o $(OBJECT_DIR)Coda.o $(OBJECT_DIR)Nodo.o $(FLAG_CC) GOP
+GOP:  GOP.o Giocatori.o Persona.o deck.o Dado.o Tabellone.o Coda.o Nodo.o Type.o
+	g++ $(OBJECT_DIR)GOP.o $(OBJECT_DIR)Giocatori.o $(OBJECT_DIR)Persona.o $(OBJECT_DIR)Type.o $(OBJECT_DIR)deck.o $(OBJECT_DIR)Dado.o $(OBJECT_DIR)Tabellone.o $(OBJECT_DIR)Coda.o $(OBJECT_DIR)Nodo.o $(FLAG_CC) GOP
 
 Type.o: $(HEAD_DIR)Type.h $(SRC_DIR)Type.cpp
 	g++ $(SRC_DIR)Type.cpp -c $(FLAG_CC) $(OBJECT_DIR)Type.o
@@ -27,8 +27,8 @@ Giocatori.o: $(HEAD_DIR)Giocatori.h $(SRC_DIR)Giocatori.cpp
 deck.o: $(HEAD_DIR)deck.h $(SRC_DIR)deck.cpp
 	g++ $(SRC_DIR)deck.cpp -c $(FLAG_CC) $(OBJECT_DIR)deck.o
 
-Lista.o: $(HEAD_DIR)Lista.h $(SRC_DIR)Lista.cpp
-	g++ $(SRC_DIR)Lista.cpp -c $(FLAG_CC) $(OBJECT_DIR)Lista.o
+Tabellone.o: $(HEAD_DIR)Tabellone.h $(SRC_DIR)Tabellone.cpp
+	g++ $(SRC_DIR)Tabellone.cpp -c $(FLAG_CC) $(OBJECT_DIR)Tabellone.o
 
 Coda.o: $(HEAD_DIR)Coda.h $(SRC_DIR)Coda.cpp
 	g++ $(SRC_DIR)Coda.cpp -c $(FLAG_CC) $(OBJECT_DIR)Coda.o

@@ -3,7 +3,7 @@
 using namespace std;
 
 
-class Lista{
+class Tabellone{
   private: Nodo *Start;
   Coda c;
   deck card;
@@ -11,8 +11,8 @@ class Lista{
   Type t;
   int cont;
 public:
-  Lista();
-  ~Lista();
+  Tabellone();
+  ~Tabellone();
   void AddFront(Nodo *nuovo);
   void stampa_caselle();
   void Append(int n);

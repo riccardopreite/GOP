@@ -14,7 +14,7 @@
 #include "deck.h"
 #include "Giocatori.h"
 #include "Nodo.h"
-#include "Lista.h"
+#include "Tabellone.h"
 using namespace std;
 #if 0
 #include <GL/glew.h>
