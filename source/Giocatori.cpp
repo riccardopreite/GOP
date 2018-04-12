@@ -78,8 +78,18 @@ void Giocatori::aggiungi_giocatore(string nome){
     next = head;
   }
   else{
+
     while(tmp->getNext() != NULL){
-      tmp = tmp->getNext();
+       do{
+         if(tmp->getNome()==nome){
+        cout<<"Il nome è già stato scelto da un altro giocatore! Per favore, scegline un altro.\n ";
+        cin>>nome;
+        cout<<endl;
+        tmp = tmp->getNext();
+      }
+      else break;
+    }
+    while(true);
     }
     tmp2 = new Persona;
     tmp2->setNext(NULL);

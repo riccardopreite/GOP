@@ -9,7 +9,7 @@
 	Persona::Persona(){
 		setNome("");
 		setCasella(0);
-		setSconfiggi(NULL);
+		setSconfiggi(false);
 		setstop(0);
 		setValDadoInit(0);
 		setColore("");
@@ -57,7 +57,7 @@
 	int Persona::getstop(){
 		return this->stop;
 	}
-	
+
 	void Persona::setValDadoInit(int n){
 		val_dado_init=n;
 		return;
