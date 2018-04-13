@@ -43,11 +43,11 @@ void Type::esplora_luogo(int x, Persona* g){
       g->setCasella(g->getCasella()+1);
     }
     else if((lancio%2==0)&&(parz%2!=0)){
-      cout<<"Hai fatto solo: "<<lancio<<" Oh no! Sei caduto nel dirupo! Per risalire impieghi un turno!!\n";
+      cout<<"Oh no! Non hai fatto entrambi pari o dispari e sei caduto nel dirupo! Per risalire impieghi un turno!!\n";
       g->setstop(g->getstop()+1);
     }
     else if((lancio%2!=0)&&(parz%2==0)){
-      cout<<"Hai fatto solo: "<<lancio<<" Oh no! Sei caduto nel dirupo! Per risalire impieghi un turno!!\n";
+      cout<<"Oh no! Non hai fatto entrambi pari o dispari e sei caduto nel dirupo! Per risalire impieghi un turno!!\n";
       g->setstop(g->getstop()+1);
     }
     return;
@@ -188,7 +188,7 @@ int i=3;
 
 void Type::combatti_mostro(int x,Persona *g){
   char sconfiggi;
-  cout<<g->getNome()<<" Devi combattere contro: "<<mostri[x].nome<<"Per vincere fai più di: "<<mostri[x].nbattere;
+  cout<<g->getNome()<<" Devi combattere contro: "<<mostri[x].nome<<"Per vincere fai più di: "<<mostri[x].nbattere<<endl;
   if(g->getSconfiggi()==true){
     cout<<"\nHai a disposizione una magia. La vuoi usare? Y/N\n";
     while(true){

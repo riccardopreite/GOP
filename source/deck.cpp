@@ -158,7 +158,7 @@ void deck::effect_4(Persona *g){
 //  printf(" AH! Sfigato! Devi rimanere fermo 3 turni!\n" );
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
-  cout<<"              |                  AH! Sfigato!                | "<<endl;
+  cout<<"              |                  AH! Sfigato!               | "<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |         Devi rimanere fermo 3 turni!        | "<<endl;
   cout<<"              |                                             | "<<endl;
