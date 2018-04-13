@@ -23,6 +23,17 @@ void deck::catch_card(Persona *g){
     coda.Shift2();
   }
   cont=coda.insert(n_card);
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                  IMPREVISTI                 | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
+cout<<g->getNome()<<" Premi invio per pescare una carta\n";
+    if(getc(stdin) != 13){
+
+}
   call_effect(n_card, g);
   return;
 }
@@ -48,7 +59,7 @@ void deck::call_effect(int n_card, Persona *g){
       effect_4(g);
       break;
       case 5 :
-      effect_5(g);
+      effect_5();
       break;
       case 6 :
       effect_6(g);
@@ -71,50 +82,16 @@ void deck::call_effect(int n_card, Persona *g){
   return;
 }
 
-#if 0
-bool deck::found(int n_card){
-bool check=false;
-for(int iq=3; iq>=0;iq--){
-if(queue[iq]==n_card){
-check=true;
-return check;
-}
-}
-return check;
-}
-void deck::edit_queue(){
-int jq=3;
-for(int iq=2; iq>=0;iq--){
-queue[jq]=queue[iq];
-jq--;
-}
-queue[0]=-1;
-return;
-}
-void deck::insert_queue(int n_card){
-if (this->cont<4){
-this->cont++;
-}
-for(int iq=3; iq>=0; iq--){
-if(queue[iq]==-1){
-queue[iq]=n_card;
-return;
-}
-}
-return;
-}
-void deck::stampa_queue(){
-for(int iq=3; iq>=0; iq-- ){
-cout<<" "<<queue[iq]<<" ";
-}
-cout<<endl;
-}
-#endif
-
 void deck::effect_0(Persona *g){
-  cout<<g->getNome();
-  printf(" Oh no! Hai incontrato uno stregone.\n Se fai più di 6 puoi ritirare i dadi, altrimenti rimani fermo due turni\n" );    //parametro: puntatore al giocatore passato per indirizzo, modifico i campi in base all'effetto
+//  printf(" Oh no! Hai incontrato uno stregone.\n Se fai più di 6 puoi ritirare i dadi, altrimenti rimani fermo due turni\n" );    //parametro: puntatore al giocatore passato per indirizzo, modifico i campi in base all'effetto
 
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |      Oh no! Hai incontrato uno stregone.    | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |     Se fai più di 6 puoi ritirare i dadi    | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |      altrimenti rimani fermo due turni      | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
   lancio=d1.Tira();
   cout<<"Hai fatto: "<<lancio<<endl;
   if(lancio>6){
@@ -129,16 +106,31 @@ void deck::effect_0(Persona *g){
   return;
 }
 void deck::effect_1(Persona *g){
-  cout<<g->getNome();
-  printf(" Una ninfa esce dall'acqua e ti regala la possibilità di rilanciare i dadi.\n" );
+
+//  printf(" Una ninfa esce dall'acqua e ti regala la possibilità di rilanciare i dadi.\n" );
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |         Una ninfa esce dall'acqua           | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |         e ti regala la possibilità          | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |            di rilanciare i dadi.            | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
   lancio=d1.Tira();
   cout<<"Prosegui di altre: "<<lancio<<" caselle"<<endl;
   g->setCasella(g->getCasella()+lancio);
   return;
 }
 void deck::effect_2(Persona *g){
-  cout<<g->getNome();
-  printf(" Rilancia i dadi e vai avanti\n" );
+
+//  printf(" Rilancia i dadi e vai avanti\n" );
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |        Rilancia i dadi e vai avanti.        | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
+
   lancio=d1.Tira();
   cout<<"Vai avanti di: "<<lancio<<" caselle"<<endl;
 
@@ -146,8 +138,15 @@ void deck::effect_2(Persona *g){
   return;
 }
 void deck::effect_3(Persona *g){
-  cout<<g->getNome();
-  printf(" Rilancia i dadi e vai indietro\n" );
+
+//  printf(" Rilancia i dadi e vai indietro\n" );
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |       Rilancia i dadi e vai indietro.       | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
   lancio=d1.Tira();
   cout<<"Vai indietro di: "<<lancio<<" caselle"<<endl;
 
@@ -155,20 +154,41 @@ void deck::effect_3(Persona *g){
   return;
 }
 void deck::effect_4(Persona *g){
-  cout<<g->getNome();
-  printf(" AH! Sfigato! Devi rimanere fermo 3 turni!\n" );
+
+//  printf(" AH! Sfigato! Devi rimanere fermo 3 turni!\n" );
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                  AH! Sfigato!                | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |         Devi rimanere fermo 3 turni!        | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
   g->setstop(g->getstop() + 3);
 
   return;
 }
-void deck::effect_5(Persona *g){
-  cout<<g->getNome();
-  printf(" Ti è andata bene! Questa volta non farai nulla.\n" );
+void deck::effect_5(){
+
+//  printf(" Ti è andata bene! Questa volta non farai nulla.\n" );
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |               Ti è andata bene!             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |       Questa volta non farai nulla.         | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
   return;
 }
 void deck::effect_6(Persona *g){
-  cout<<g->getNome();
-  printf(" Sei caduto nel pozzo e ti sei rotto una gamba!\n Fai almeno 5 per guarire altrimenti rimani lì per due turni.\n" );
+
+//  printf(" Sei caduto nel pozzo e ti sei rotto una gamba!\n Fai almeno 5 per guarire altrimenti rimani lì per due turni.\n" );
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |         Sei caduto nel pozzo e  ti sei      | "<<endl;
+  cout<<"              |                rotto una gamba!             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |      Fai almeno 5 per guarire altrimenti    | "<<endl;
+  cout<<"              |           rimani lì per due turni.          | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
   lancio=d1.Tira();
   cout<<"Hai fatto: "<<lancio<<endl;
 
@@ -179,26 +199,54 @@ void deck::effect_6(Persona *g){
   return;
 }
 void deck::effect_7(Persona *g){
-  cout<<g->getNome();
-  printf(" Con questa magia potrai sconfiggere un mostro qualsiasi\n" );
+
+//  printf(" Con questa magia potrai sconfiggere un mostro qualsiasi\n" );
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |     Con questa magia potrai sconfiggere      | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |            un mostro qualsiasi!             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
   g->setSconfiggi(true);
   return;
 }
 void deck::effect_8(Persona *g){
-  cout<<g->getNome();
-  printf(" Ti perdi nella foresta nera. Impieghi due turni per uscire\n" );
+
+//  printf(" Ti perdi nella foresta nera. Impieghi due turni per uscire\n" );
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |         Ti perdi nella foresta nera.        | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |         Impieghi due turni per uscire       | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
   g->setstop(g->getstop() + 2);
   return;
 }
 void deck::effect_9(Persona *g){
-  cout<<g->getNome();
-  printf(" Sfigato! Ritorna al Via.\n" );
+
+//  printf(" Sfigato! Ritorna al Via.\n" );
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |           Sfigato! Ritorna al Via.           | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
   g->setCasella(0);
   return;
 }
 void deck::effect_10(Persona *g){
-  cout<<g->getNome();
-  printf(" Vai avanti di 10 caselle!\n" );
+
+//  printf(" Vai avanti di 10 caselle!\n" );
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |          Vai avanti di 10 caselle!          | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
   g->setCasella(g->getCasella()+10);
   return;
 }

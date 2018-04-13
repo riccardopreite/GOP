@@ -2,9 +2,8 @@
 //main di prova
 
 #include "header.h"
-
 int main(){
-  int x=0,res,n_caselle,giocatori;
+  int x=0,res,n_caselle,giocatori,colore=32;
   bool win=false;
   string winner;
   Persona *c;
@@ -18,7 +17,6 @@ int main(){
   for(int i = 0; i <= n_caselle; i++ ){
     l.Append(i);
   }
-  //l.stampa_caselle();
   cout<<"Il tabellone è di: "<<n_caselle<<" caselle.\n";
   cout<<"\nQuanti giocatori ci sono? (minimo 2)\n";
 
@@ -44,6 +42,7 @@ int main(){
   }
   cout<<"Iniziamo!\n";
   c=g.scegli_primo();
+  system("clear");
   while(win==false){
     if(c->getstop()!=0){
       g.stampa_giocatore(c);
@@ -60,24 +59,26 @@ int main(){
     else{
       cout<<"\nè il turno di: ";
       g.stampa_giocatore(c);
-      cout<<"\npremi invio per tirare i dadi\n";
-        res = d1.Tira();
-        cout<<res<<endl;
-        l.SetGiocatore(c, res, n_caselle);
-        g.stampa_posizione();
-        l.Visualizza(n_caselle);
-        cout<<"\nPremi invio per passare il turno.\n";
-        if(getc(stdin) != 13){
-        system("clear");
-      }
+      printf("\n%s____________%s  %s ____________%s\n%s|          |%s   %s|          |%s\n%s|          |%s   %s|          |%s\n%s|     *    |%s   %s|     *    |%s\n",COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR);
+      printf("%s|          |%s   %s|          |%s\n%s|__________|%s   %s|__________|%s\n",COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR );
+      cout<<"\nPREMI INVIO PER TIRARE I DADI\n";
+      res = d1.Tira();
+      cout<<res<<endl;
+      l.SetGiocatore(c, res, n_caselle);
+      g.stampa_posizione();
+      l.Visualizza(n_caselle);
     }
     if(c->getCasella()==n_caselle){
       win=true;
       break;
     }
-    c=g.player_turn(c);
+    cout<<"\nPremi invio per passare il turno.\n";
+    if(getc(stdin) != 13){
+      system("clear");
+      c=g.player_turn(c);
+    }
   }
   winner=c->getNome();
-  cout<<"Il vincitore è:"<<winner<<endl;
+  cout<<"\nIl vincitore è:"<<winner<<endl;
   return 0;
 }

@@ -12,7 +12,7 @@
 		setSconfiggi(false);
 		setstop(0);
 		setValDadoInit(0);
-		setColore("");
+		setColore(0);
 	}
 
 	Persona::~Persona(){}
@@ -37,10 +37,10 @@
 	bool Persona::getSconfiggi(){
 		return _sconfiggi_mostro;
 	}
-	void Persona::setColore(string colore){
+	void Persona::setColore(int colore){
 		_colore = colore;
 	}
-	string Persona::getColore(){
+	int Persona::getColore(){
 		return _colore;
 	}
 	void Persona::setNext(Persona *succ){
