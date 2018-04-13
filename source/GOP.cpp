@@ -36,13 +36,16 @@ int main(){
   }
   l.Visualizza(n_caselle);
   d1.err_input();
-  cout<<"\nPremi invio per iniziare!\n";
+  cout<<"\nPremi invio per lottare per il primo posto!\n";
+  if(getc(stdin) != 13){
+    system("clear");
+  }
+  c=g.scegli_primo();
+  cout<<"\nPremi invio per iniziare!";
   if(getc(stdin) != 13){
     system("clear");
   }
   cout<<"Iniziamo!\n";
-  c=g.scegli_primo();
-  system("clear");
   while(win==false){
     if(c->getstop()!=0){
       g.stampa_giocatore(c);
@@ -63,7 +66,6 @@ int main(){
       printf("%s|          |%s   %s|          |%s\n%s|__________|%s   %s|__________|%s\n",COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR );
       cout<<"\nPREMI INVIO PER TIRARE I DADI\n";
       res = d1.Tira();
-      cout<<res<<endl;
       l.SetGiocatore(c, res, n_caselle);
       g.stampa_posizione();
       l.Visualizza(n_caselle);

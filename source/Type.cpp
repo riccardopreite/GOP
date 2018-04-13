@@ -15,9 +15,9 @@ void Type::esplora_luogo(int x, Persona* g){
   cout<<g->getNome()<<" Hai trovato: "<<luoghi[x].nome<<endl<<luoghi[x].info<<endl;
   if(x==2){
     parz=d1.Tira_2();
-    cout<<"Con il primo dado hai fatto: "<<parz<<". Tira di nuovo!\n";
+    cout<<"\nCon il primo dado hai fatto: "<<parz<<". Tira di nuovo!\n";
     lancio=d1.Tira_2();
-    cout<<"Con il Secondo dado hai fatto: "<<lancio<<".\n";
+    cout<<"\nCon il Secondo dado hai fatto: "<<lancio<<".\n";
     if(lancio==parz){
       cout<<"Hai fatto doppio! Raddoppi il tuo risultato.\n";
       lancio=lancio+parz;
@@ -29,18 +29,32 @@ void Type::esplora_luogo(int x, Persona* g){
     }
     return;
   }
-  lancio=d1.Tira();
-  switch (x) {
-    case 0:
-    if(lancio%2==0){
+  else if(x==0){
+    parz=d1.Tira_2();
+    cout<<"\nCon il primo dado hai fatto: "<<parz<<". Tira di nuovo!\n";
+    lancio=d1.Tira_2();
+    cout<<"\nCon il Secondo dado hai fatto: "<<lancio<<".\n";
+    if((lancio%2==0)&&(parz%2==0)){
       cout<<"Totalizzando "<<lancio<<" hai saltato il dirupo! Avanzi di una casella.\n";
       g->setCasella(g->getCasella()+1);
     }
-    else if(lancio%2!=0){
+    else if((lancio%2!=0)&&(parz%2!=0)){
+      cout<<"Totalizzando "<<lancio<<" hai saltato il dirupo! Avanzi di una casella.\n";
+      g->setCasella(g->getCasella()+1);
+    }
+    else if((lancio%2==0)&&(parz%2!=0)){
       cout<<"Hai fatto solo: "<<lancio<<" Oh no! Sei caduto nel dirupo! Per risalire impieghi un turno!!\n";
       g->setstop(g->getstop()+1);
     }
-    break;
+    else if((lancio%2!=0)&&(parz%2==0)){
+      cout<<"Hai fatto solo: "<<lancio<<" Oh no! Sei caduto nel dirupo! Per risalire impieghi un turno!!\n";
+      g->setstop(g->getstop()+1);
+    }
+    return;
+  }
+
+  lancio=d1.Tira();
+  switch (x) {
     case 1:
     cout<<"Hai fatto: "<<lancio;
     if(lancio<4){
@@ -69,8 +83,8 @@ void Type::esplora_luogo(int x, Persona* g){
     }
     else {
       cout<<"La foresta ti ha confuso torni indietro di "<<lancio<<endl;
+      g->setCasella(g->getCasella()-lancio);
     }
-    g->setCasella(g->getCasella()-lancio);
     break;
     case 5:
     if(lancio%3==0){
@@ -114,9 +128,21 @@ void Type::raccogli_oggetto(int x, int lancio, Persona *g){
 
 void Type::cavalca_mezzo(int x, Persona *g){
   if(x == 0){
+int i=3;
     cout<<g->getNome()<<" Hai rubato un cavallo."<<endl;
+#if 0
+    while(i>0){
+      cout<<". ";
+      system("pause");
+      //sleep(1);
+      i--;
+    }
+    #endif
+    cout<<". ";
     sleep(1);
-    cout<<"Oh no ti hanno scoperto! Lancia due dadi. Se mantieni la calma e fai meno di 9, riesci a raddoppiare il risultato fuggendo.\nAltrimenti cadi dalla fretta, il contadino ti picchia e avanzi di una casella strisciando\n";
+    cout<<". ";
+    cout<<". ";
+    cout<<"\nOh no ti hanno scoperto! Lancia due dadi. Se mantieni la calma e fai meno di 9, riesci a raddoppiare il risultato fuggendo.\nAltrimenti cadi dalla fretta, il contadino ti picchia e avanzi di una casella strisciando\n";
     lancio=d1.Tira();
     cout<<"Hai fatto: "<<lancio<<endl;
     if(lancio<9){
@@ -129,14 +155,14 @@ void Type::cavalca_mezzo(int x, Persona *g){
     }
   }
   else if(x == 1){
-    cout<<g->getNome()<<" Hai trovato un drago. Per domarlo tira tre volte il dado e totalizza almeno 15 e avanzi volando di 25 caselle.\nAltrimenti scappi a gambe levate e vai avanti di una casella"<<endl;
+    cout<<g->getNome()<<" Hai trovato un drago. Per domarlo tira tre volte il dado e totalizza almeno 20 e avanzi volando di 25 caselle.\nAltrimenti scappi a gambe levate e vai avanti di una casella"<<endl;
     lancio=d1.Tira();
     cout<<"Primo lancio: "<<lancio<<"\nOra tira per la seconda volta.\n";
     lancio=lancio+d1.Tira();
     cout<<"Secondo lancio: "<<lancio<<"\nOra tira per la terza volta.\n";
     lancio=lancio+d1.Tira();
     cout<<"Hai fatto: "<<lancio<<endl;
-    if(lancio>=15){
+    if(lancio>=20){
       cout<<"\nHai domato il Drago! Adesso puoi cavalcarlo!\n";
       g->setCasella(g->getCasella()+25);
     }

@@ -203,7 +203,7 @@ void deck::effect_7(Persona *g){
 //  printf(" Con questa magia potrai sconfiggere un mostro qualsiasi\n" );
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
-  cout<<"              |     Con questa magia potrai sconfiggere      | "<<endl;
+  cout<<"              |     Con questa magia potrai sconfiggere     | "<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |            un mostro qualsiasi!             | "<<endl;
   cout<<"              |                                             | "<<endl;
@@ -230,7 +230,7 @@ void deck::effect_9(Persona *g){
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |                                             | "<<endl;
-  cout<<"              |           Sfigato! Ritorna al Via.           | "<<endl;
+  cout<<"              |           Sfigato! Ritorna al Via.          | "<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |_____________________________________________| "<<endl;
