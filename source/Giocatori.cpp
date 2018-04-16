@@ -23,7 +23,7 @@ Persona *Giocatori::scegli_primo(){
   }
   while(tmp != NULL){
     if(tmp->getValDadoInit() != -1){
-      cout<<"\nTocca al giocatore "<<tmp->getNome()<<"\nPremi invio per tirare il dado\n";
+      cout<<"\n\nTocca al giocatore "<<tmp->getNome()<<"\nPremi invio per tirare il dado\n";
       lancio = d1.Tira();
       cout<<"Hai totalizzato: "<<lancio;
       tmp->setValDadoInit(lancio);
@@ -59,7 +59,7 @@ Persona *Giocatori::scegli_primo(){
     tmp = tmp->getNext();
   }
   if( x == 1){
-    cout<<"\nInizia "<<tmp2->getNome();
+    cout<<"\n\nInizia il giocatore: "<<tmp2->getNome();
     next = tmp2;
     return next;
   }else{
