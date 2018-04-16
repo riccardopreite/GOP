@@ -12,7 +12,6 @@ class Tabellone{
   int cont;
 public:
   Tabellone();
-  ~Tabellone();
   void AddFront(Nodo *nuovo);
   void stampa_caselle();
   void Append(int n);

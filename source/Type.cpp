@@ -5,19 +5,22 @@ Type::Type(){
   CaricaOgettiMagici();
   CaricaMezzi();
   CaricaLuoghi();
+//file_path_mem = *malloc(sizeof(char)*1000);
+//file_path_mem=(char*) malloc(150);
+
+  n=0;
 }
 
-Type::~Type(){
-}
+
 
 void Type::esplora_luogo(int x, Persona* g){
   int parz=0;
   cout<<g->getNome()<<" Hai trovato: "<<luoghi[x].nome<<endl<<luoghi[x].info<<endl;
   if(x==2){
     parz=d1.Tira_2();
-    cout<<"\nCon il primo dado hai fatto: "<<parz<<". Tira di nuovo!\n";
+    cout<<"Con il primo dado hai fatto: "<<parz<<". Tira di nuovo!\n";
     lancio=d1.Tira_2();
-    cout<<"\nCon il Secondo dado hai fatto: "<<lancio<<".\n";
+    cout<<"Con il Secondo dado hai fatto: "<<lancio<<".\n";
     if(lancio==parz){
       cout<<"Hai fatto doppio! Raddoppi il tuo risultato.\n";
       lancio=lancio+parz;
@@ -29,32 +32,18 @@ void Type::esplora_luogo(int x, Persona* g){
     }
     return;
   }
-  else if(x==0){
-    parz=d1.Tira_2();
-    cout<<"\nCon il primo dado hai fatto: "<<parz<<". Tira di nuovo!\n";
-    lancio=d1.Tira_2();
-    cout<<"\nCon il Secondo dado hai fatto: "<<lancio<<".\n";
-    if((lancio%2==0)&&(parz%2==0)){
-      cout<<"Totalizzando "<<lancio<<" hai saltato il dirupo! Avanzi di una casella.\n";
-      g->setCasella(g->getCasella()+1);
-    }
-    else if((lancio%2!=0)&&(parz%2!=0)){
-      cout<<"Totalizzando "<<lancio<<" hai saltato il dirupo! Avanzi di una casella.\n";
-      g->setCasella(g->getCasella()+1);
-    }
-    else if((lancio%2==0)&&(parz%2!=0)){
-      cout<<"Oh no! Non hai fatto entrambi pari o dispari e sei caduto nel dirupo! Per risalire impieghi un turno!!\n";
-      g->setstop(g->getstop()+1);
-    }
-    else if((lancio%2!=0)&&(parz%2==0)){
-      cout<<"Oh no! Non hai fatto entrambi pari o dispari e sei caduto nel dirupo! Per risalire impieghi un turno!!\n";
-      g->setstop(g->getstop()+1);
-    }
-    return;
-  }
-
   lancio=d1.Tira();
   switch (x) {
+    case 0:
+    if(lancio%2==0){
+      cout<<"Totalizzando "<<lancio<<" hai saltato il dirupo! Avanzi di una casella.\n";
+      g->setCasella(g->getCasella()+1);
+    }
+    else if(lancio%2!=0){
+      cout<<"Hai fatto solo: "<<lancio<<" Oh no! Sei caduto nel dirupo! Per risalire impieghi un turno!!\n";
+      g->setstop(g->getstop()+1);
+    }
+    break;
     case 1:
     cout<<"Hai fatto: "<<lancio;
     if(lancio<4){
@@ -83,8 +72,8 @@ void Type::esplora_luogo(int x, Persona* g){
     }
     else {
       cout<<"La foresta ti ha confuso torni indietro di "<<lancio<<endl;
-      g->setCasella(g->getCasella()-lancio);
     }
+    g->setCasella(g->getCasella()-lancio);
     break;
     case 5:
     if(lancio%3==0){
@@ -128,21 +117,13 @@ void Type::raccogli_oggetto(int x, int lancio, Persona *g){
 
 void Type::cavalca_mezzo(int x, Persona *g){
   if(x == 0){
-int i=3;
     cout<<g->getNome()<<" Hai rubato un cavallo."<<endl;
-#if 0
-    while(i>0){
-      cout<<". ";
-      system("pause");
-      //sleep(1);
-      i--;
+    while(sleep(1)){
+      d1.err_input();
+
     }
-    #endif
-    cout<<". ";
-    sleep(1);
-    cout<<". ";
-    cout<<". ";
-    cout<<"\nOh no ti hanno scoperto! Lancia due dadi. Se mantieni la calma e fai meno di 9, riesci a raddoppiare il risultato fuggendo.\nAltrimenti cadi dalla fretta, il contadino ti picchia e avanzi di una casella strisciando\n";
+    //sleep(1);
+    cout<<"Oh no ti hanno scoperto! Lancia due dadi. Se mantieni la calma e fai meno di 9, riesci a raddoppiare il risultato fuggendo.\nAltrimenti cadi dalla fretta, il contadino ti picchia e avanzi di una casella strisciando\n";
     lancio=d1.Tira();
     cout<<"Hai fatto: "<<lancio<<endl;
     if(lancio<9){
@@ -155,14 +136,14 @@ int i=3;
     }
   }
   else if(x == 1){
-    cout<<g->getNome()<<" Hai trovato un drago. Per domarlo tira tre volte il dado e totalizza almeno 20 e avanzi volando di 25 caselle.\nAltrimenti scappi a gambe levate e vai avanti di una casella"<<endl;
+    cout<<g->getNome()<<" Hai trovato un drago. Per domarlo tira tre volte il dado e totalizza almeno 15 e avanzi volando di 25 caselle.\nAltrimenti scappi a gambe levate e vai avanti di una casella"<<endl;
     lancio=d1.Tira();
     cout<<"Primo lancio: "<<lancio<<"\nOra tira per la seconda volta.\n";
     lancio=lancio+d1.Tira();
     cout<<"Secondo lancio: "<<lancio<<"\nOra tira per la terza volta.\n";
     lancio=lancio+d1.Tira();
     cout<<"Hai fatto: "<<lancio<<endl;
-    if(lancio>=20){
+    if(lancio>=15){
       cout<<"\nHai domato il Drago! Adesso puoi cavalcarlo!\n";
       g->setCasella(g->getCasella()+25);
     }
@@ -221,16 +202,21 @@ void Type::combatti_mostro(int x,Persona *g){
 void Type::CaricaMostri(){
   int x = 0;
   FILE* fin;
-  size_t n=0;
-  char* line;
-  fin=fopen("FileCaselle/mostri.txt","r");
+  char* line,line2;
+    line=NULL;
+
+//file_path_mem="./mostri.txt";
+  fin=fopen("./FileCaselle/mostri.txt","r");
   while (x<9){
     getline(&line, &n, fin);
+    //&line2=line;
     mostri[x].nome = line;
     getline(&line, &n, fin);
+    //line2=line;
     mostri[x].nbattere = atoi(line);
     x++;
   }
+//  free(file_path_mem);
   fclose(fin);
 }
 
@@ -238,15 +224,21 @@ void Type::CaricaMostri(){
 void Type::CaricaOgettiMagici(){
   int x = 0;
   FILE* fin;
-  size_t n=0;
-  char* line;
-  fin=fopen("FileCaselle/oggettimagici.txt","r");
+  char* line,line2;
+//  char *file_path_mem = malloc(sizeof(char));
+  //file_path_mem="./oggettimagici.txt";
+  line=NULL;
+
+  fin=fopen("./FileCaselle/oggettimagici.txt","r");
   while (x<5)
   {
     getline(&line, &n, fin);
+    //line2=line;
     oggettiMagici[x].nome = line;
     x++;
   }
+//  free(file_path_mem);
+
   fclose(fin);
 }
 
@@ -254,14 +246,20 @@ void Type::CaricaOgettiMagici(){
 void Type::CaricaMezzi(){
   int x = 0;
   FILE* fin;
-  size_t n=0;
-  char* line;
-  fin=fopen("FileCaselle/mezzi.txt","r");
+  char* line,line2;
+  line=NULL;
+
+//  char *file_path_mem = malloc(sizeof(char));
+  //file_path_mem="./mezzi.txt";
+  fin=fopen("./FileCaselle/mezzi.txt","r");
   while (x<3){
     getline(&line, &n, fin);
+    //line2=line;
     mezzi[x].nome = line;
     x++;
   }
+  //free(file_path_mem);
+
   fclose(fin);
 }
 
@@ -269,15 +267,21 @@ void Type::CaricaMezzi(){
 void Type::CaricaLuoghi(){
   int x = 0;
   FILE* fin;
-  size_t n=0;
-  char* line;
-  fin=fopen("FileCaselle/luoghi.txt","r");
+  char* line,line2;
+  line=NULL;
+//  char *file_path_mem = malloc(sizeof(char));
+//  file_path_mem="./luoghi.txt";
+  fin=fopen("./FileCaselle/luoghi.txt","r");
   while (x<6){
     getline(&line, &n, fin);
+  //  line2=line;
     luoghi[x].nome = line;
     getline(&line, &n, fin);
+  //  line2=line;
     luoghi[x].info = line;
     x++;
   }
+//  free(file_path_mem);
+
   fclose(fin);
 }

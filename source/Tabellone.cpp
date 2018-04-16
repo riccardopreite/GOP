@@ -9,8 +9,6 @@ Tabellone::Tabellone(){
   cont=0;
 }
 
-Tabellone::~Tabellone(){
-}
 
 
 void Tabellone::set_cont(int n_caselle){

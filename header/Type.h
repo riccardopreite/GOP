@@ -31,7 +31,6 @@ class Type{
 
 	public:
 		Type();
-		~Type();
 		void raccogli_oggetto(int x, int lancio, Persona *g);
 		void esplora_luogo(int x, Persona *g);
 		void cavalca_mezzo(int x, Persona *g);

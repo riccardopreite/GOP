@@ -3,7 +3,7 @@
 
 deck::deck(){
   coda=Coda();
-  coda=Coda(4);
+  coda=Coda(3);
   cont=0;
   d1=Dado();
   d2=Dado();
@@ -12,6 +12,13 @@ deck::deck(){
 
 void deck::catch_card(Persona *g){
   bool check;
+  cout<<"               _____________________________________________"<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                  IMPREVISTI                 | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |                                             | "<<endl;
+  cout<<"              |_____________________________________________| "<<endl;
   do{
     srand(static_cast<unsigned int>(time(NULL)));
     n_card=(rand() % 109)+1;
@@ -23,13 +30,7 @@ void deck::catch_card(Persona *g){
     coda.Shift2();
   }
   cont=coda.insert(n_card);
-  cout<<"               _____________________________________________"<<endl;
-  cout<<"              |                                             | "<<endl;
-  cout<<"              |                                             | "<<endl;
-  cout<<"              |                  IMPREVISTI                 | "<<endl;
-  cout<<"              |                                             | "<<endl;
-  cout<<"              |                                             | "<<endl;
-  cout<<"              |_____________________________________________| "<<endl;
+d1.err_input();
 cout<<g->getNome()<<" Premi invio per pescare una carta\n";
     if(getc(stdin) != 13){
 
