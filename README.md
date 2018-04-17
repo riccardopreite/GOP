@@ -5,7 +5,7 @@
 # Roberto Barbone
 
 # Scaricare il repo:
-# "git clone https::/github.com/riccardopreite/GOP"
+# "git clone https://github.com/riccardopreite/GOP"
 # Eseguire:
 # "cd /perscorso/GOP"
 # "sudo chmod +x Start.sh"
