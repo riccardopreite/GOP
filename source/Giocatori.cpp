@@ -1,9 +1,3 @@
-/*
-* Giocatori.cpp
-*
-*  Created on: 09 mar 2018
-*      Author: xxxx
-*/
 
 #include "header.h"
 
@@ -169,24 +163,6 @@ Persona *Giocatori::return_head(){
   return this->head;
 }
 
-#if 0
-Persona *Giocatori::Set_first(int n_giocatori){
-int first;
-Persona *tmp=head;
-n_giocatori=n_giocatori*100;
-first=(rand() % n_giocatori) +1;
-first=first/100;
-while(first>0){
-if(tmp==NULL){
-tmp=head;
-}
-tmp=tmp->getNext();
-first--;
-}
-cout<<"\nInizia "<<tmp->getNome()<<endl;
-return tmp;
-}
-#endif
 Persona *Giocatori::player_turn(Persona *c){
   Persona *tmp= c;
   if(tmp->getNext()==NULL){

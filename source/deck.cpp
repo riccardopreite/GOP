@@ -6,7 +6,6 @@ deck::deck(){
   coda=Coda(3);
   cont=0;
   d1=Dado();
-  d2=Dado();
 }
 
 
@@ -84,7 +83,6 @@ void deck::call_effect(int n_card, Persona *g){
 }
 
 void deck::effect_0(Persona *g){
-//  printf(" Oh no! Hai incontrato uno stregone.\n Se fai più di 6 puoi ritirare i dadi, altrimenti rimani fermo due turni\n" );    //parametro: puntatore al giocatore passato per indirizzo, modifico i campi in base all'effetto
 
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |      Oh no! Hai incontrato uno stregone.    | "<<endl;
@@ -108,7 +106,6 @@ void deck::effect_0(Persona *g){
 }
 void deck::effect_1(Persona *g){
 
-//  printf(" Una ninfa esce dall'acqua e ti regala la possibilità di rilanciare i dadi.\n" );
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |         Una ninfa esce dall'acqua           | "<<endl;
   cout<<"              |                                             | "<<endl;
@@ -123,7 +120,6 @@ void deck::effect_1(Persona *g){
 }
 void deck::effect_2(Persona *g){
 
-//  printf(" Rilancia i dadi e vai avanti\n" );
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |                                             | "<<endl;
@@ -140,7 +136,6 @@ void deck::effect_2(Persona *g){
 }
 void deck::effect_3(Persona *g){
 
-//  printf(" Rilancia i dadi e vai indietro\n" );
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |                                             | "<<endl;
@@ -156,7 +151,6 @@ void deck::effect_3(Persona *g){
 }
 void deck::effect_4(Persona *g){
 
-//  printf(" AH! Sfigato! Devi rimanere fermo 3 turni!\n" );
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |                  AH! Sfigato!               | "<<endl;
@@ -170,7 +164,6 @@ void deck::effect_4(Persona *g){
 }
 void deck::effect_5(){
 
-//  printf(" Ti è andata bene! Questa volta non farai nulla.\n" );
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |               Ti è andata bene!             | "<<endl;
@@ -182,7 +175,6 @@ void deck::effect_5(){
 }
 void deck::effect_6(Persona *g){
 
-//  printf(" Sei caduto nel pozzo e ti sei rotto una gamba!\n Fai almeno 5 per guarire altrimenti rimani lì per due turni.\n" );
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |         Sei caduto nel pozzo e  ti sei      | "<<endl;
   cout<<"              |                rotto una gamba!             | "<<endl;
@@ -201,7 +193,6 @@ void deck::effect_6(Persona *g){
 }
 void deck::effect_7(Persona *g){
 
-//  printf(" Con questa magia potrai sconfiggere un mostro qualsiasi\n" );
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |     Con questa magia potrai sconfiggere     | "<<endl;
@@ -214,7 +205,6 @@ void deck::effect_7(Persona *g){
 }
 void deck::effect_8(Persona *g){
 
-//  printf(" Ti perdi nella foresta nera. Impieghi due turni per uscire\n" );
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |         Ti perdi nella foresta nera.        | "<<endl;
@@ -227,7 +217,6 @@ void deck::effect_8(Persona *g){
 }
 void deck::effect_9(Persona *g){
 
-//  printf(" Sfigato! Ritorna al Via.\n" );
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |                                             | "<<endl;
@@ -240,7 +229,6 @@ void deck::effect_9(Persona *g){
 }
 void deck::effect_10(Persona *g){
 
-//  printf(" Vai avanti di 10 caselle!\n" );
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |                                             | "<<endl;

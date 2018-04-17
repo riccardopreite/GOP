@@ -1,9 +1,4 @@
-/*
- * Persona.cpp
- *
- *  Created on: 09 mar 2018
- *      Author: xxxx
- */
+
  #include "header.h"
 
 	Persona::Persona(){

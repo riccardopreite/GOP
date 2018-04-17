@@ -1,13 +1,3 @@
-/*
- * Giocatori.h
- *
- *  Created on: 09 mar 2018
- *      Author: xxxx
- */
-
-#ifndef GIOCATORI_H_
-#define GIOCATORI_H_
-using namespace std;
 
 class Giocatori{
 private:
@@ -25,9 +15,3 @@ public:
 	Persona *search_player(string nome);
 	Persona *Set_first(int n_giocatori);
 };
-
-
-
-
-
-#endif /* GIOCATORI_H_ */

@@ -19,7 +19,7 @@ void Tabellone::set_cont(int n_caselle){
     this->cont=3;
   }
 }
-void Tabellone::AddFront(Nodo *nuovo){
+void Tabellone::AddFront(Casella *nuovo){
   Start=nuovo;
 }
 #if 0
@@ -215,7 +215,7 @@ int Tabellone::GetType(){
 
 void Tabellone::Append(int n)
 {
-  Nodo *nuovo = new Nodo;
+  Casella *nuovo = new Casella;
   nuovo->SetSucc(NULL);
   nuovo->SetNome(NULL);
   nuovo->SetNum(n);
@@ -228,7 +228,7 @@ void Tabellone::Append(int n)
     AddFront(nuovo);
     return;
   }
-  Nodo *scor=Start;
+  Casella *scor=Start;
 
   while(scor->GetSucc()!= NULL){
     scor = scor->GetSucc();
@@ -237,8 +237,8 @@ void Tabellone::Append(int n)
 }
 
 void Tabellone::Visualizza(int n_caselle){
-  Nodo *scor=Start;
-  Nodo *tmp = Start;
+  Casella *scor=Start;
+  Casella *tmp = Start;
   int colore;
   Persona *giocatore=player.return_head();
   int res=0,caselle_2;
@@ -256,39 +256,36 @@ void Tabellone::Visualizza(int n_caselle){
       while((tmp->GetSucc() != NULL)&&(res<=25)){
         if (tmp->GetNome()!=NULL) {
           giocatore=tmp->GetNome();
-
-          //  printf("%s#%s", COL(32) ,COL_CLEAR );
           colore=giocatore->getColore();
           switch(colore){
             case 31:
-            printf("%s#", COL(31) );
+            printf("%s:)", COL(31) );
             break;
             case 32:
-            printf("%s#", COL(32) );
+            printf("%s:)", COL(32) );
             break;
             case 33:
-            printf("%s#", COL(33) );
+            printf("%s:)", COL(33) );
             break;
             case 34:
-            printf("%s#", COL(34) );
+            printf("%s:)", COL(34) );
             break;
             case 35:
-            printf("%s#", COL(35) );
+            printf("%s:)", COL(35) );
             break;
             case 36:
-            printf("%s#", COL(36) );
+            printf("%s:)", COL(36) );
             break;
             case 37:
-            printf("%s#", COL(37) );
+            printf("%s:)", COL(37) );
             break;
           }
           printf("%s",COL_CLEAR );
-          //  cout<<"#";
           if(res<=9){
-            cout<<"   ";
+            cout<<"  ";
           }
           else{
-            cout<<"    ";
+            cout<<"   ";
           }
         }
         else if(res<=9){
@@ -300,13 +297,11 @@ void Tabellone::Visualizza(int n_caselle){
         res++;
         tmp = tmp->GetSucc();
       }
-      //cout<<"\n_________________________________________________________________________________________________________________________";
       printf("%s\n_________________________________________________________________________________________________________________________\n%s",COL(32),COL_CLEAR);
 
       printf("%s|%s",COL(32),COL_CLEAR);
       while(scor->GetNum()<=25){
         printf("%s_%d_|%s",COL(32),scor->GetNum(),COL_CLEAR );
-        //cout<<"_"<<scor->GetNum()<<"_|";
         scor=scor->GetSucc();
       }
       n_caselle=n_caselle-26;
@@ -315,57 +310,53 @@ void Tabellone::Visualizza(int n_caselle){
     n_caselle=n_caselle-24;
     res=0;
     if(n_caselle>=0){
-      cout<<"\n\n   ";
+      cout<<"\n\n  ";
       while((tmp->GetSucc() != NULL)&&(res<=23)) {
         if (tmp->GetNome()!=NULL) {
           giocatore=tmp->GetNome();
           colore=giocatore->getColore();
           switch(colore){
             case 31:
-            printf("%s#", COL(31) );
+            printf("%s:)", COL(31) );
             break;
             case 32:
-            printf("%s#", COL(32) );
+            printf("%s:)", COL(32) );
             break;
             case 33:
-            printf("%s#", COL(33) );
+            printf("%s:)", COL(33) );
             break;
             case 34:
-            printf("%s#", COL(34) );
+            printf("%s:)", COL(34) );
             break;
             case 35:
-            printf("%s#", COL(35) );
+            printf("%s:)", COL(35) );
             break;
             case 36:
-            printf("%s#", COL(36) );
+            printf("%s:)", COL(36) );
             break;
             case 37:
-            printf("%s#", COL(37) );
+            printf("%s:)", COL(37) );
             break;
           }
-          printf("    %s",COL_CLEAR );
-          //  printf("%s#%s     ", COL(32) ,COL_CLEAR );
-          //  cout<<"#    ";
+          printf("%s   ",COL_CLEAR );
         }
         else cout<<"     ";
         res++;
         tmp = tmp->GetSucc();
       }
-      //cout<<"\n_________________________________________________________________________________________________________________________";
       printf("%s\n_________________________________________________________________________________________________________________________\n%s",COL(32),COL_CLEAR);
 
       printf("%s|%s",COL(32),COL_CLEAR);
       res=0;
       while((res<24)&&(scor!=NULL)){
         printf("%s_%d_|%s",COL(32),scor->GetNum(),COL_CLEAR );
-        //  cout<<"_"<<scor->GetNum()<<"_|";
         scor=scor->GetSucc();
         res++;
       }
     }
     else{
       res=0;
-      cout<<"\n\n   ";
+      cout<<"\n\n"  ;
       n_caselle=caselle_2;
       while((tmp->GetSucc() != NULL)&&(res<=n_caselle)) {
         if (tmp->GetNome()!=NULL) {
@@ -374,30 +365,28 @@ void Tabellone::Visualizza(int n_caselle){
           colore=giocatore->getColore();
           switch(colore){
             case 31:
-            printf("%s#", COL(31) );
+            printf("%s:)", COL(31) );
             break;
             case 32:
-            printf("%s#", COL(32) );
+            printf("%s:)", COL(32) );
             break;
             case 33:
-            printf("%s#", COL(33) );
+            printf("%s:)", COL(33) );
             break;
             case 34:
-            printf("%s#", COL(34) );
+            printf("%s:)", COL(34) );
             break;
             case 35:
-            printf("%s#", COL(35) );
+            printf("%s:)", COL(35) );
             break;
             case 36:
-            printf("%s#", COL(36) );
+            printf("%s:)", COL(36) );
             break;
             case 37:
-            printf("%s#", COL(37) );
+            printf("%s:)", COL(37) );
             break;
           }
-          printf("%s",COL_CLEAR );
-          //printf("%s#%s    ", COL(32) ,COL_CLEAR );
-          //  cout<<"#    ";
+          printf("   %s",COL_CLEAR );
         }
         else cout<<"     ";
         res++;
@@ -406,14 +395,11 @@ void Tabellone::Visualizza(int n_caselle){
       cout<<"\n";
       while(caselle_2>=0){
         printf("%s_____%s",COL(32) ,COL_CLEAR );
-        //cout<<"_____";
         caselle_2--;
       }
-      //  cout<<"_\n|";
       printf("%s_\n|%s",COL(32),COL_CLEAR );
       while((n_caselle>=0)&&(scor!=NULL)){
         printf("%s_%d_|%s",COL(32),scor->GetNum(),COL_CLEAR );
-        //cout<<"_"<<scor->GetNum()<<"_|";
         scor=scor->GetSucc();
         n_caselle--;
       }
@@ -426,8 +412,8 @@ void Tabellone::SetGiocatore(Persona *giocatore, int n, int n_caselle){
   if(Start == NULL){
     return;
   }
-  Nodo *tmp = Start;
-  Nodo *tmp2 = Start;
+  Casella *tmp = Start;
+  Casella *tmp2 = Start;
   Persona *giocatore2;
   giocatore2=giocatore;
   while(tmp2 != NULL){
@@ -464,9 +450,9 @@ void Tabellone::SetGiocatore(Persona *giocatore, int n, int n_caselle){
   }
 }
 
-void Tabellone::get_effect(Persona *giocatore, Nodo *tmp, int n){
+void Tabellone::get_effect(Persona *giocatore, Casella *tmp, int n){
   Persona *giocatore2;
-  Nodo *tmp2=Start;
+  Casella *tmp2=Start;
   switch(tmp->GetType()){
     case 0:
     cout<<"\nVisto che non devi fare niente,almeno picchia il porta pizza!\n";
@@ -556,8 +542,8 @@ void Tabellone::duello(Persona *giocatore, Persona* giocatore2,int n_caselle){
   int res_duello, res_duello_2;
   Dado d1 = Dado();
   Dado d2 = Dado();
-  Nodo *tmp = Start;
-  Nodo *tmp2 = Start;
+  Casella *tmp = Start;
+  Casella *tmp2 = Start;
   while(duello==true){
     cout<<"E' ora del duello!\n"<<giocatore->getNome()<<" Lancia i dadi!\n";
     res_duello= d1.Tira();
@@ -584,7 +570,7 @@ void Tabellone::duello(Persona *giocatore, Persona* giocatore2,int n_caselle){
 }
 #if 0
 void Tabellone::stampa_caselle(){
-Nodo*tmp= Start;
+Casella*tmp= Start;
 while(tmp!=NULL){
 cout<<"effect: "<<tmp->GetType()<<endl;
 tmp=tmp->GetSucc();

@@ -40,7 +40,6 @@ int main(){
     d1.err_input();
     cin>>giocatori;
   }
-  x=giocatori;
   x=1;
   while(giocatori>0){
     visualizzaGOP();
@@ -69,7 +68,6 @@ int main(){
     cout<<"Iniziamo!\n";
   while(win==false){
     visualizzaGOP();
-    l.Visualizza(n_caselle);
     if(c->getstop()!=0){
       g.stampa_giocatore(c);
       c->setstop(c->getstop()-1);
@@ -96,6 +94,7 @@ int main(){
       win=true;
       break;
     }
+    l.Visualizza(n_caselle);
     cout<<"\nPremi invio per passare il turno.\n";
     if(getc(stdin) != 13){
       system("clear");
@@ -103,6 +102,11 @@ int main(){
     }
   }
   winner=c->getNome();
-  cout<<"\nIl vincitore è:"<<winner<<endl;
+  cout<<"\n___________.__              __      __.__                             .__";
+  cout<<"\n\\__    ___/|  |__   ____   /  \\    /  \\__| ____   ____   ___________  |__| ______ /\\ ";
+  cout<<"\n  |    |   |  |  \\_/ __ \\  \\   \\/\\/   /  |/    \\ /    \\_/ __ \\_  __ \\ |  |/  ___/ \\/ ";
+  cout<<"\n  |    |   |   Y  \\  ___/   \\        /|  |   |  \\   |  \\  ___/|  | \\/ |  |\___ \\   /\\ ";
+  cout<<"\n  |____|   |___|  /\\___  >   \\__/\\  / |__|___|  /___|  /\\___  >__|    |__/____  > \\/ ";
+  cout<<"\n                \\/     \\/         \\/          \\/     \\/     \\/                \\/     "<<winner<<endl;
   return 0;
 }

@@ -1,22 +1,21 @@
 #include<iostream>
 using namespace std;
 
-class Nodo{
+class Casella{
 
       private:
             Persona *nome_g;
       		   int num;
-               Nodo *succ;
+               Casella *succ;
                int tip_cas;
-			   string nome_effetto;
-      public: Nodo();
-              ~Nodo();
+      public: Casella();
+              ~Casella();
               void SetType(int t);
               void SetNum(int n);
               void SetNome(Persona *x);
-              void SetSucc(Nodo *x);
+              void SetSucc(Casella *x);
               Persona *GetNome();
               int GetNum();
               int GetType();
-			  Nodo* GetSucc();
+			        Casella* GetSucc();
 };

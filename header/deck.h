@@ -1,4 +1,3 @@
-//Deck.h
 
 class deck{
 private:
@@ -7,7 +6,6 @@ private:
   int cont;
   int lancio;
   Dado d1;
-  Dado d2;
   Coda coda;
 public:
     deck();
@@ -24,10 +22,6 @@ public:
     void effect_8(Persona *g);
     void effect_9(Persona *g);
     void effect_10(Persona *g);
-    //  bool found(int n_card);
-    //  void edit_queue();
-    //  void insert_queue(int n_card);
-    //  void stampa_queue();
 
 
 };

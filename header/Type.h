@@ -28,7 +28,7 @@ class Type{
 		Mezzi mezzi[3];  			//TipoCasella 2  1)nome mezzo
 		Mostri mostri[9];			//TipoCasella 3  1)Nome mostro,  2)Numero Perbattere , 3) numero di volte che puo comparire
 		Oggetti oggettiMagici[5];	//TipoCasella4  1)Nome, 2)Operatore, 3)navanti, 4)contatore
-
+		char* line;
 	public:
 		Type();
 		void raccogli_oggetto(int x, int lancio, Persona *g);

@@ -1,13 +1,3 @@
-/*
- * Persona.h
- *
- *  Created on: 09 mar 2018
- *      Author: xxxx
- */
-
-#ifndef PERSONA_H_
-#define PERSONA_H_
-using namespace std;
 
 class Persona{
 private:
@@ -36,6 +26,3 @@ public:
 	int getstop();
 	~Persona();
 };
-
-
-#endif /* PERSONA_H_ */

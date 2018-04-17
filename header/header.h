@@ -7,13 +7,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+using namespace std;
 #include "Persona.h"
 #include "Dado.h"
 #include "Type.h"
 #include"Coda.h"
 #include "deck.h"
 #include "Giocatori.h"
-#include "Nodo.h"
+#include "Casella.h"
 #include "Tabellone.h"
 #define COL(x) "\033[" #x ";1m"
 #define COL_RED COL(31)
@@ -24,11 +25,3 @@
 #define COL_SKY COL(36)
 #define COL_WHITE COL(37)
 #define COL_CLEAR "\033[0m"
-using namespace std;
-#if 0
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-GLFWwindow* window;
-#include <glm/glm.hpp>
-using namespace glm;
-#endif
