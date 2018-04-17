@@ -83,9 +83,6 @@ int main(){
     else{
       cout<<"\nè il turno di: ";
       g.stampa_giocatore(c);
-      printf("\n%s____________%s  %s ____________%s\n%s|          |%s   %s|          |%s\n%s|          |%s   %s|          |%s\n%s|     *    |%s   %s|     *    |%s\n",COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR);
-      printf("%s|          |%s   %s|          |%s\n%s|__________|%s   %s|__________|%s\n",COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR );
-      cout<<"\nPREMI INVIO PER TIRARE I DADI\n";
       res = d1.Tira();
       l.SetGiocatore(c, res, n_caselle);
       g.stampa_posizione();

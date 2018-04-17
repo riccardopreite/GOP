@@ -15,6 +15,9 @@ void Dado::err_input(){
 
 int Dado::Tira(){
   res_1,res_2;
+  printf("\n%s____________%s  %s ____________%s\n%s|          |%s   %s|          |%s\n%s|          |%s   %s|          |%s\n%s|     *    |%s   %s|     *    |%s\n",COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR);
+  printf("%s|          |%s   %s|          |%s\n%s|__________|%s   %s|__________|%s\n",COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR );
+  cout<<"\nPREMI INVIO PER TIRARE I DADI\n";
   if(getc(stdin) != 13){
     res_1=((rand() % 500)+1);
     res_1=(res_1/100)+1;
@@ -198,7 +201,9 @@ int Dado::Tira(){
   }
 }
 int Dado::Tira_2(){
-  if(getc(stdin) != 13){
+  cout<<"PREMI INVIO PER TIRARE IL DADO\n";
+  printf("\n%s____________%s\n%s|          |%s\n%s|          |%s\n%s|     *    |%s\n%s|          |%s\n%s|__________|%s\n",COL(33),COL_CLEAR,COL(33),COL_CLEAR,COL(33),COL_CLEAR,COL(33),COL_CLEAR,COL(33),COL_CLEAR,COL(33),COL_CLEAR);
+    if(getc(stdin) != 13){
     res_1=((rand() % 500)+1);
     res_1=(res_1/100)+1;
     switch (res_1) {

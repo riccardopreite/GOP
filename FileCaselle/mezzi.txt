@@ -1,3 +1,6 @@
-CAVALLO
-DRAGO
-CAROVANA
+ Hai rubato un cavallo. 
+Oh no ti hanno scoperto! Lancia due dadi. Se mantieni la calma e fai meno di 9, riesci a raddoppiare il risultato fuggendo.\nAltrimenti cadi dalla fretta, il contadino ti picchia e avanzi di una casella strisciando\n
+ Hai trovato un drago. Per domarlo tira tre volte il dado e totalizza almeno 20 e avanzi volando di 25 caselle.
+Altrimenti scappi a gambe levate e vai avanti di una casella
+ Uno straniero ti offre un passaggio sulla sua carovana ad una condizione.
+Tira due dadi,se totalizzi un punteggio uguale a 2,5 o 10 ti accompogna per 15 caselle. Altrimenti continui a piedi.

@@ -10,8 +10,8 @@ private:
 	int val_dado_init;
 public:
 	Persona();
-    void setValDadoInit(int n);
-    int getValDadoInit();
+	void setValDadoInit(int n);
+	int getValDadoInit();
 	void setNome(string n);
 	string getNome();
 	void setCasella(int casella);

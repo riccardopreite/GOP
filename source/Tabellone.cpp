@@ -10,7 +10,6 @@ Tabellone::Tabellone(){
 }
 
 
-
 void Tabellone::set_cont(int n_caselle){
   if(n_caselle>=40 && n_caselle<75){
     this->cont=2;
@@ -203,14 +202,6 @@ int Tabellone::GetType(){
     return 24;
   }
 }
-
-
-/*String setCasellaNameEffect(){
-
-}*/
-
-
-
 
 
 void Tabellone::Append(int n)
@@ -455,7 +446,7 @@ void Tabellone::get_effect(Persona *giocatore, Casella *tmp, int n){
   Casella *tmp2=Start;
   switch(tmp->GetType()){
     case 0:
-    cout<<"\nVisto che non devi fare niente,almeno picchia il porta pizza!\n";
+    cout<<endl<<giocatore->getNome()<<"Visto che non devi fare niente,almeno picchia il porta pizza!\n";
     break;
     case 1:
     t.cavalca_mezzo(0,giocatore);

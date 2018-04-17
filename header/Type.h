@@ -7,10 +7,12 @@ struct Mostri{
 
 struct Mezzi{
 	string nome;
+	string effetto;
 };
 
 struct Oggetti{
 	string nome;
+	string effetto;
 };
 
 struct Luoghi{

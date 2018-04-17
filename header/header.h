@@ -11,7 +11,7 @@ using namespace std;
 #include "Persona.h"
 #include "Dado.h"
 #include "Type.h"
-#include"Coda.h"
+#include "Coda.h"
 #include "deck.h"
 #include "Giocatori.h"
 #include "Casella.h"

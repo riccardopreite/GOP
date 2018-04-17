@@ -17,6 +17,7 @@
 	string Persona::getNome(){
 		return _nome;
 	}
+
 	void Persona::setCasella(int casella){
 		_casella = casella;
     if(this->_casella<0) {

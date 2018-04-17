@@ -16,9 +16,9 @@ void Type::esplora_luogo(int x, Persona* g){
   cout<<g->getNome()<<" Hai trovato: "<<luoghi[x].nome<<endl<<luoghi[x].info<<endl;
   if(x==2){
     parz=d1.Tira_2();
-    cout<<"Con il primo dado hai fatto: "<<parz<<". Tira di nuovo!\n";
+    cout<<"\nCon il primo dado hai fatto: "<<parz<<". Tira di nuovo!\n";
     lancio=d1.Tira_2();
-    cout<<"Con il Secondo dado hai fatto: "<<lancio<<".\n";
+    cout<<"\nCon il Secondo dado hai fatto: "<<lancio<<".\n";
     if(lancio==parz){
       cout<<"Hai fatto doppio! Raddoppi il tuo risultato.\n";
       lancio=lancio+parz;
@@ -87,26 +87,21 @@ void Type::esplora_luogo(int x, Persona* g){
 
 void Type::raccogli_oggetto(int x, int lancio, Persona *g){
 
-  cout<<g->getNome()<<" hai trovato: "<<oggettiMagici[x].nome;
+  cout<<g->getNome()<<" hai trovato: "<<oggettiMagici[x].nome<<oggettiMagici[x].effetto;
   switch (x) {
     case 0:
-    cout<<"Vai avanti di altre 5 caselle!\n";
     g->setCasella(g->getCasella()+5);
     break;
     case 1:
-    cout<<"Vai avanti di altre 3 caselle!\n";
     g->setCasella(g->getCasella()+3);
     break;
     case 2:
-    cout<<"Moltiplica il tuo risultato x 2!\n";
     g->setCasella(g->getCasella()+lancio);
     break;
     case 3:
-    cout<<"Vai avanti di altre 2 caselle!\n";
-    g->setCasella(g->getCasella()+2);
+    g->setCasella(g->getCasella()+1);
     break;
     case 4:
-    cout<<"Vai avanti di altre 3 caselle!\n";
     g->setCasella(g->getCasella()+3);
     break;
   }
@@ -114,13 +109,9 @@ void Type::raccogli_oggetto(int x, int lancio, Persona *g){
 
 
 void Type::cavalca_mezzo(int x, Persona *g){
-  if(x == 0){
-    cout<<g->getNome()<<" Hai rubato un cavallo."<<endl;
-    while(sleep(1)){
-      d1.err_input();
-
-    }
-    cout<<"Oh no ti hanno scoperto! Lancia due dadi. Se mantieni la calma e fai meno di 9, riesci a raddoppiare il risultato fuggendo.\nAltrimenti cadi dalla fretta, il contadino ti picchia e avanzi di una casella strisciando\n";
+cout<<g->getNome()<<" "<<mezzi[x].nome<<mezzi[x].effetto;
+switch(x){
+    case 0:
     lancio=d1.Tira();
     cout<<"Hai fatto: "<<lancio<<endl;
     if(lancio<9){
@@ -131,9 +122,8 @@ void Type::cavalca_mezzo(int x, Persona *g){
       cout<<"\nOh no! Sei caduto prosegui di una sola casella.\n";
       g->setCasella(g->getCasella()+1);
     }
-  }
-  else if(x == 1){
-    cout<<g->getNome()<<" Hai trovato un drago. Per domarlo tira tre volte il dado e totalizza almeno 20 e avanzi volando di 25 caselle.\nAltrimenti scappi a gambe levate e vai avanti di una casella"<<endl;
+    break;
+    case 1:
     lancio=d1.Tira();
     cout<<"Primo lancio: "<<lancio<<"\nOra tira per la seconda volta.\n";
     lancio=lancio+d1.Tira();
@@ -148,9 +138,8 @@ void Type::cavalca_mezzo(int x, Persona *g){
       cout<<"\nOh no! Il drago ti sta attaccando.\n Scappi via dalla grotta avanzando di 1.\n";
       g->setCasella(g->getCasella()+1);
     }
-  }
-  else if(x==2){
-    cout<<g->getNome()<<" Uno straniero ti offre un passaggio sulla sua carovana ad una condizione, tira due dadi,se totalizzi un punteggio uguale a 2,5 o 10 ti accompogna per 15 caselle. Altrimenti continui a piedi.\n";
+    break;
+    case 2:
     lancio=d1.Tira();
     cout<<"Hai fatto: "<<lancio<<endl;
     if((lancio==2) || (lancio==5) || (lancio==10)){
@@ -160,6 +149,7 @@ void Type::cavalca_mezzo(int x, Persona *g){
     else{
       cout<<"\nLo straniero ti ha lasciato a piedi. Rimani dove ti trovi.\n";
     }
+    break;
   }
 }
 
@@ -223,6 +213,8 @@ void Type::CaricaOgettiMagici(){
   {
     getline(&line, &n, fin);
     oggettiMagici[x].nome = line;
+    getline(&line, &n, fin);
+    oggettiMagici[x].effetto = line;
     x++;
   }
   fclose(fin);
@@ -238,6 +230,8 @@ void Type::CaricaMezzi(){
   while (x<3){
     getline(&line, &n, fin);
     mezzi[x].nome = line;
+    getline(&line, &n, fin);
+    mezzi[x].effetto = line;
     x++;
   }
   fclose(fin);

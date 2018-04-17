@@ -4,7 +4,8 @@ using namespace std;
 
 
 class Tabellone{
-  private: Casella *Start;
+  private:
+  Casella *Start;
   Coda c;
   deck card;
   Giocatori player;
