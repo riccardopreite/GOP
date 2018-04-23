@@ -24,7 +24,6 @@ void Tabellone::AddFront(Casella *nuovo){
 #if 0
 prendi random casella, vedi se in quelle adiacenti sono di diverso tipo,altrimenti ti blocchi
 
-<<<<<<< HEAD
 da 1 a 25 vuote, il resto mostri
 0 PICCHIA IL PORTAPIZZE
 --------
@@ -259,20 +258,57 @@ void Tabellone::Visualizza(int n_caselle, Giocatori g){
             }
             tmp2 = tmp2->getNext();
           }
-        }
-        if(x > 1){
-          printf("%s#",COL(31) );
-        }
-        else if (tmp->GetNome()!=NULL) {
-          if (x == 1){
+          if(x > 1){
+            printf("%s# %s",COL(31), COL_CLEAR );
+            if(res<=9){
+              cout<<"  ";
+            }
+            else{
+              cout<<"   ";
+            }
+            res++;
+            tmp = tmp->GetSucc();
+          }
+          else if (x == 1){
             giocatore=tmp3;
             colore=giocatore->getColore();
+            switch(colore){
+              case 31:
+              printf("%s:)", COL(31) );
+              break;
+              case 32:
+              printf("%s:)", COL(32) );
+              break;
+              case 33:
+              printf("%s:)", COL(33) );
+              break;
+              case 34:
+              printf("%s:)", COL(34) );
+              break;
+              case 35:
+              printf("%s:)", COL(35) );
+              break;
+              case 36:
+              printf("%s:)", COL(36) );
+              break;
+              case 37:
+              printf("%s:)", COL(37) );
+              break;
+            }
+            printf("%s",COL_CLEAR );
+            if(res<=9){
+              cout<<"  ";
+            }
+            else{
+              cout<<"   ";
+            }
+            res++;
+            tmp = tmp->GetSucc();
           }
-          else{
-            giocatore=tmp->GetNome();
-            colore=giocatore->getColore();
-          }
-
+        }
+        else if (tmp->GetNome()!=NULL) {
+          giocatore=tmp->GetNome();
+          colore=giocatore->getColore();
           switch(colore){
             case 31:
             printf("%s:)", COL(31) );
@@ -304,11 +340,13 @@ void Tabellone::Visualizza(int n_caselle, Giocatori g){
             cout<<"   ";
           }
         }
-        else if(res<=9){
-          cout<<"    ";
-        }
-        else{
-          cout<<"     ";
+        if(tmp->GetNome()==NULL){
+          if(res<=9){
+            cout<<"    ";
+          }
+          else{
+            cout<<"     ";
+          }
         }
         res++;
         tmp = tmp->GetSucc();
@@ -378,7 +416,7 @@ void Tabellone::Visualizza(int n_caselle, Giocatori g){
     }
     else{
       res=0;
-      cout<<"\n\n"  ;
+      cout<<"\n\n  ";
       n_caselle=caselle_2;
       while((tmp->GetSucc() != NULL)&&(res<=n_caselle)) {
         if (tmp->GetNome()!=NULL) {
@@ -408,7 +446,7 @@ void Tabellone::Visualizza(int n_caselle, Giocatori g){
             printf("%s:)", COL(37) );
             break;
           }
-          printf("   %s",COL_CLEAR );
+          printf("%s   ",COL_CLEAR );
         }
         else cout<<"     ";
         res++;
