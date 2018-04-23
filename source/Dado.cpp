@@ -201,9 +201,9 @@ int Dado::Tira(){
   }
 }
 int Dado::Tira_2(){
-  cout<<"PREMI INVIO PER TIRARE IL DADO\n";
   printf("\n%s____________%s\n%s|          |%s\n%s|          |%s\n%s|     *    |%s\n%s|          |%s\n%s|__________|%s\n",COL(33),COL_CLEAR,COL(33),COL_CLEAR,COL(33),COL_CLEAR,COL(33),COL_CLEAR,COL(33),COL_CLEAR,COL(33),COL_CLEAR);
-    if(getc(stdin) != 13){
+  cout<<"PREMI INVIO PER TIRARE IL DADO\n";
+  if(getc(stdin) != 13){
     res_1=((rand() % 500)+1);
     res_1=(res_1/100)+1;
     switch (res_1) {

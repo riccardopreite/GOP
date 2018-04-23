@@ -29,11 +29,10 @@ void deck::catch_card(Persona *g){
     coda.Shift2();
   }
   cont=coda.insert(n_card);
-d1.err_input();
-cout<<g->getNome()<<" Premi invio per pescare una carta\n";
-    if(getc(stdin) != 13){
+  cout<<g->getNome()<<" Premi invio per pescare una carta\n";
+  if(getc(stdin) != 13){
 
-}
+  }
   call_effect(n_card, g);
   return;
 }

@@ -1,6 +1,6 @@
 
 class Giocatori{
-private:
+protected:
 	Persona *head;
 	Persona *next;
 public:

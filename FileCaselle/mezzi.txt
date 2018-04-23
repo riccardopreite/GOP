@@ -1,5 +1,5 @@
- Hai rubato un cavallo. 
-Oh no ti hanno scoperto! Lancia due dadi. Se mantieni la calma e fai meno di 9, riesci a raddoppiare il risultato fuggendo.\nAltrimenti cadi dalla fretta, il contadino ti picchia e avanzi di una casella strisciando\n
+ Hai rubato un cavallo.
+Oh no ti hanno scoperto! Lancia due dadi. Se mantieni la calma e fai meno di 9, riesci a raddoppiare il risultato fuggendo.Altrimenti cadi per la fretta, il contadino ti picchia e avanzi di una casella strisciando
  Hai trovato un drago. Per domarlo tira tre volte il dado e totalizza almeno 20 e avanzi volando di 25 caselle.
 Altrimenti scappi a gambe levate e vai avanti di una casella
  Uno straniero ti offre un passaggio sulla sua carovana ad una condizione.

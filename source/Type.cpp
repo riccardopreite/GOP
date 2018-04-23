@@ -96,7 +96,7 @@ void Type::raccogli_oggetto(int x, int lancio, Persona *g){
     g->setCasella(g->getCasella()+3);
     break;
     case 2:
-    g->setCasella(g->getCasella()+lancio);
+    g->setCasella((g->getCasella()+lancio)+1);
     break;
     case 3:
     g->setCasella(g->getCasella()+1);
@@ -109,8 +109,8 @@ void Type::raccogli_oggetto(int x, int lancio, Persona *g){
 
 
 void Type::cavalca_mezzo(int x, Persona *g){
-cout<<g->getNome()<<" "<<mezzi[x].nome<<mezzi[x].effetto;
-switch(x){
+  cout<<g->getNome()<<" "<<mezzi[x].nome<<mezzi[x].effetto;
+  switch(x){
     case 0:
     lancio=d1.Tira();
     cout<<"Hai fatto: "<<lancio<<endl;

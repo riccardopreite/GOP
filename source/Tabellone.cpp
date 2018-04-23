@@ -230,8 +230,11 @@ void Tabellone::Append(int n)
 void Tabellone::Visualizza(int n_caselle){
   Casella *scor=Start;
   Casella *tmp = Start;
+  Persona *tmp2 = player.return_head();
+  int x = 0;
   int colore;
   Persona *giocatore=player.return_head();
+  cout<<tmp2->getNome();
   int res=0,caselle_2;
   if(Start==NULL){
     cout<<"Non ci sono valori nella Tabellone\n";
@@ -245,6 +248,21 @@ void Tabellone::Visualizza(int n_caselle){
     if(scor->GetNum()<=25){
       cout<<"  ";
       while((tmp->GetSucc() != NULL)&&(res<=25)){
+        if(scor->GetNum()==0){
+          tmp2 = player.return_head();
+          while(tmp2!= NULL){
+            cout<<"ciao";
+
+            if(tmp2->getCasella() == 0){
+              x++;
+            }
+            tmp2 = tmp2->getNext();
+          }
+        }
+        if(x > 1){
+          printf("%s#\n",COL(31) );
+        }
+        else
         if (tmp->GetNome()!=NULL) {
           giocatore=tmp->GetNome();
           colore=giocatore->getColore();
@@ -288,11 +306,17 @@ void Tabellone::Visualizza(int n_caselle){
         res++;
         tmp = tmp->GetSucc();
       }
-      printf("%s\n_________________________________________________________________________________________________________________________\n%s",COL(32),COL_CLEAR);
+      printf("%s\n_____%s",COL(31),COL_CLEAR);
+      printf("%s____________________________________________________________________________________________________________________\n%s",COL(36),COL_CLEAR);
 
-      printf("%s|%s",COL(32),COL_CLEAR);
+      printf("%s|%s",COL(31),COL_CLEAR);
       while(scor->GetNum()<=25){
-        printf("%s_%d_|%s",COL(32),scor->GetNum(),COL_CLEAR );
+        if(scor->GetNum()==0){
+          printf("%s_%d_|%s",COL(31),scor->GetNum(),COL_CLEAR );
+        }
+        else{
+          printf("%s_%d_|%s",COL(36),scor->GetNum(),COL_CLEAR );
+        }
         scor=scor->GetSucc();
       }
       n_caselle=n_caselle-26;
@@ -335,12 +359,12 @@ void Tabellone::Visualizza(int n_caselle){
         res++;
         tmp = tmp->GetSucc();
       }
-      printf("%s\n_________________________________________________________________________________________________________________________\n%s",COL(32),COL_CLEAR);
+      printf("%s\n_________________________________________________________________________________________________________________________\n%s",COL(36),COL_CLEAR);
 
-      printf("%s|%s",COL(32),COL_CLEAR);
+      printf("%s|%s",COL(36),COL_CLEAR);
       res=0;
       while((res<24)&&(scor!=NULL)){
-        printf("%s_%d_|%s",COL(32),scor->GetNum(),COL_CLEAR );
+        printf("%s_%d_|%s",COL(36),scor->GetNum(),COL_CLEAR );
         scor=scor->GetSucc();
         res++;
       }
@@ -385,12 +409,12 @@ void Tabellone::Visualizza(int n_caselle){
       }
       cout<<"\n";
       while(caselle_2>=0){
-        printf("%s_____%s",COL(32) ,COL_CLEAR );
+        printf("%s_____%s",COL(36) ,COL_CLEAR );
         caselle_2--;
       }
-      printf("%s_\n|%s",COL(32),COL_CLEAR );
+      printf("%s_\n|%s",COL(36),COL_CLEAR );
       while((n_caselle>=0)&&(scor!=NULL)){
-        printf("%s_%d_|%s",COL(32),scor->GetNum(),COL_CLEAR );
+        printf("%s_%d_|%s",COL(36),scor->GetNum(),COL_CLEAR );
         scor=scor->GetSucc();
         n_caselle--;
       }
@@ -446,7 +470,7 @@ void Tabellone::get_effect(Persona *giocatore, Casella *tmp, int n){
   Casella *tmp2=Start;
   switch(tmp->GetType()){
     case 0:
-    cout<<endl<<giocatore->getNome()<<"Visto che non devi fare niente,almeno picchia il porta pizza!\n";
+    cout<<endl<<giocatore->getNome()<<" visto che non devi fare niente,almeno picchia il porta pizza!\n";
     break;
     case 1:
     t.cavalca_mezzo(0,giocatore);

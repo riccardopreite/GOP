@@ -5,12 +5,12 @@
 
 void visualizzaGOP(){
   system("clear");
-  cout<<"\t\t\t\t\t\t\t\t\t\t   _____  ____  _____\n";
-  cout<<"\t\t\t\t\t\t\t\t\t\t / _____|/ __ \\|  __ \\ "<<endl;
-  cout<<"\t\t\t\t\t\t\t\t\t\t | |  __| |  | | |__) |"<<endl;
-  cout<<"\t\t\t\t\t\t\t\t\t\t | | |_ | |  | |  ___/"<<endl;
-  cout<<"\t\t\t\t\t\t\t\t\t\t | |__| | |__| | |"<<endl;
-  cout<<"\t\t\t\t\t\t\t\t\t\t \\______|\\____/|_|"<<endl;
+  cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t   _____  ____  _____\n";
+  cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t / _____|/ __ \\|  __ \\ "<<endl;
+  cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t | |  __| |  | | |__) |"<<endl;
+  cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t | | |_ | |  | |  ___/"<<endl;
+  cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t | |__| | |__| | |"<<endl;
+  cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t \\______|\\____/|_|"<<endl;
 }
 
 
@@ -32,9 +32,7 @@ int main(){
   }
   cout<<"Il tabellone è di: "<<n_caselle<<" caselle.\n";
   cout<<"\nQuanti giocatori ci sono? (minimo 2)\n";
-
   cin>>giocatori;
-
   while((!cin.good())||giocatori<2){
     cout<<"Quanti giocatori ci sono? (minimo 2)\n";
     d1.err_input();
@@ -57,15 +55,15 @@ int main(){
     system("clear");
   }
 
-    visualizzaGOP();
+  visualizzaGOP();
   c=g.scegli_primo();
   cout<<"\nPremi invio per iniziare!";
   if(getc(stdin) != 13){
     system("clear");
   }
 
-    visualizzaGOP();
-    cout<<"Iniziamo!\n";
+  visualizzaGOP();
+  cout<<"Iniziamo!\n";
   while(win==false){
     visualizzaGOP();
     if(c->getstop()!=0){
@@ -102,7 +100,7 @@ int main(){
   cout<<"\n___________.__              __      __.__                             .__";
   cout<<"\n\\__    ___/|  |__   ____   /  \\    /  \\__| ____   ____   ___________  |__| ______ /\\ ";
   cout<<"\n  |    |   |  |  \\_/ __ \\  \\   \\/\\/   /  |/    \\ /    \\_/ __ \\_  __ \\ |  |/  ___/ \\/ ";
-  cout<<"\n  |    |   |   Y  \\  ___/   \\        /|  |   |  \\   |  \\  ___/|  | \\/ |  |\___ \\   /\\ ";
+  cout<<"\n  |    |   |   Y  \\  ___/   \\        /|  |   |  \\   |  \\  ___/|  | \\/ |  |\\___ \\   /\\ ";
   cout<<"\n  |____|   |___|  /\\___  >   \\__/\\  / |__|___|  /___|  /\\___  >__|    |__/____  > \\/ ";
   cout<<"\n                \\/     \\/         \\/          \\/     \\/     \\/                \\/     "<<winner<<endl;
   return 0;

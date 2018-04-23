@@ -11,19 +11,19 @@ Casella::~Casella(){
 
 
 void Casella::SetNome(Persona *x) {
-     nome_g=x;
+	nome_g=x;
 }
 
 Persona *Casella::GetNome(){
-    return nome_g;
+	return nome_g;
 }
 
 void Casella::SetSucc(Casella *x){
-     succ=x;
+	succ=x;
 }
 
 Casella* Casella::GetSucc(){
-     return succ;
+	return succ;
 }
 
 void Casella::SetNum(int n){

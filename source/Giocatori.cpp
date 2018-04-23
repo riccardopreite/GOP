@@ -153,8 +153,19 @@ void Giocatori::stampa_giocatore(Persona *c){
 
 void Giocatori::stampa_posizione(){
   Persona *tmp=head;
+  string nome;
   while(tmp!=NULL){
-    cout<<endl<<tmp->getNome()<<" è nella posizione: "<<tmp->getCasella()<<endl;
+    nome=tmp->getNome();
+    if(tmp->getCasella()==0){
+      printf("%s",COL(31));
+      cout<<nome;
+      printf(" è nella posizione %d%s\n", tmp->getCasella(), COL_CLEAR );
+    }
+    else{
+      printf("%s",COL(36));
+      cout<<nome;
+      printf(" è nella posizione %d%s\n", tmp->getCasella(), COL_CLEAR );
+    }
     tmp=tmp->getNext();
   }
 }
