@@ -16,7 +16,7 @@ public:
   void AddFront(Casella *nuovo);
   void stampa_caselle();
   void Append(int n);
-  void Visualizza(int n_caselle);
+  void Visualizza(int n_caselle, Giocatori g);
   void SetGiocatore(Persona *g, int n, int n_caselle);
   int GetType();
   void set_cont(int n_caselle);

@@ -227,13 +227,14 @@ void Tabellone::Append(int n)
   scor->SetSucc(nuovo);
 }
 
-void Tabellone::Visualizza(int n_caselle){
+void Tabellone::Visualizza(int n_caselle, Giocatori g){
   Casella *scor=Start;
   Casella *tmp = Start;
-  Persona *tmp2 = player.return_head();
+  Persona *tmp2 = g.return_head();
+  Persona *tmp3 ;
   int x = 0;
   int colore;
-  Persona *giocatore=player.return_head();
+  Persona *giocatore=g.return_head();
   cout<<tmp2->getNome();
   int res=0,caselle_2;
   if(Start==NULL){
@@ -248,24 +249,30 @@ void Tabellone::Visualizza(int n_caselle){
     if(scor->GetNum()<=25){
       cout<<"  ";
       while((tmp->GetSucc() != NULL)&&(res<=25)){
-        if(scor->GetNum()==0){
-          tmp2 = player.return_head();
+        x = 0;
+        if(tmp->GetNum()==0){
+          tmp2 = g.return_head();
           while(tmp2!= NULL){
-            cout<<"ciao";
-
             if(tmp2->getCasella() == 0){
               x++;
+              tmp3 = tmp2;
             }
             tmp2 = tmp2->getNext();
           }
         }
         if(x > 1){
-          printf("%s#\n",COL(31) );
+          printf("%s#",COL(31) );
         }
-        else
-        if (tmp->GetNome()!=NULL) {
-          giocatore=tmp->GetNome();
-          colore=giocatore->getColore();
+        else if (tmp->GetNome()!=NULL) {
+          if (x == 1){
+            giocatore=tmp3;
+            colore=giocatore->getColore();
+          }
+          else{
+            giocatore=tmp->GetNome();
+            colore=giocatore->getColore();
+          }
+
           switch(colore){
             case 31:
             printf("%s:)", COL(31) );

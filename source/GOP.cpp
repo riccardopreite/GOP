@@ -48,7 +48,7 @@ int main(){
     giocatori--;
   }
   visualizzaGOP();
-  l.Visualizza(n_caselle);
+  l.Visualizza(n_caselle,g);
   d1.err_input();
   cout<<"\n\nPremi invio per lottare per il primo posto!\n";
   if(getc(stdin) != 13){
@@ -89,7 +89,7 @@ int main(){
       win=true;
       break;
     }
-    l.Visualizza(n_caselle);
+    l.Visualizza(n_caselle,g);
     cout<<"\nPremi invio per passare il turno.\n";
     if(getc(stdin) != 13){
       system("clear");
