@@ -25,10 +25,8 @@ void deck::catch_card(Persona *g){
     check=coda.Find(n_card);
   }
   while(check==true);
-  if(this->cont>=4){
-    coda.Shift2();
-  }
-  cont=coda.insert(n_card);
+
+  coda.Shift(n_card);
   cout<<g->getNome()<<" Premi invio per pescare una carta\n";
   if(getc(stdin) != 13){
 
@@ -153,8 +151,8 @@ void deck::effect_4(Persona *g){
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |                  AH! Sfigato!               | "<<endl;
-  cout<<"              |                                             | "<<endl;
-  cout<<"              |         Devi rimanere fermo 3 turni!        | "<<endl;
+  cout<<"              |             Sei finito alla gogna,          | "<<endl;
+  cout<<"              |         devi rimanere fermo 3 turni!        | "<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |_____________________________________________| "<<endl;
   g->setstop(g->getstop() + 3);
@@ -166,8 +164,8 @@ void deck::effect_5(){
   cout<<"               _____________________________________________"<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |               Ti è andata bene!             | "<<endl;
-  cout<<"              |                                             | "<<endl;
-  cout<<"              |       Questa volta non farai nulla.         | "<<endl;
+  cout<<"              |            Il re ti ha graziato,            | "<<endl;
+  cout<<"              |       questa volta non farai nulla.         | "<<endl;
   cout<<"              |                                             | "<<endl;
   cout<<"              |_____________________________________________| "<<endl;
   return;

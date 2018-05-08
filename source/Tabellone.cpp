@@ -486,7 +486,7 @@ void Tabellone::SetGiocatore(Persona *giocatore, int n, int n_caselle){
   giocatore->setCasella(giocatore->getCasella()+n);
   if(giocatore->getCasella()>n_caselle){
     scarto=giocatore->getCasella()-n_caselle;
-    cout<<"oh no! Sei andato oltre al limite del tabellone, devi tornare indietro di: "<<scarto<<" caselle!\n";
+    cout<<"\noh no! Sei andato oltre al limite del tabellone, devi tornare indietro di: "<<scarto<<" caselle!\n";
     giocatore->setCasella(n_caselle-scarto);
   }
   while(tmp->GetSucc() != NULL){

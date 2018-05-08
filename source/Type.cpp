@@ -109,7 +109,7 @@ void Type::raccogli_oggetto(int x, int lancio, Persona *g){
 
 
 void Type::cavalca_mezzo(int x, Persona *g){
-  cout<<g->getNome()<<" "<<mezzi[x].nome<<mezzi[x].effetto;
+  cout<<g->getNome()<<" "<<mezzi[x].nome<<endl<<mezzi[x].effetto;
   switch(x){
     case 0:
     lancio=d1.Tira();

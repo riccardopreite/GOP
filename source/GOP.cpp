@@ -16,15 +16,25 @@ void visualizzaGOP(){
 
 int main(){
   visualizzaGOP();
-  int x=0,res,n_caselle,giocatori,colore=32;
-  bool win=false;
+  int x=0,res,n_caselle,giocatori;
+  bool win;
+  char game;
   string winner;
   Persona *c;
   string nome;
-  Giocatori g = Giocatori();
-  Tabellone l=Tabellone();
-  Dado d1 = Dado();
-  srand(static_cast<unsigned int>(time(NULL)));
+  Giocatori g;
+  Tabellone l;
+  Dado d1;
+  do{
+    c=NULL;
+    nome="\0";
+    winner="\0";
+    win=false;
+    game='\0';
+   g = Giocatori();
+   l = Tabellone();
+   d1 = Dado();
+  srand((time(0)));
   n_caselle = (rand() % 50)+41;
   l.set_cont(n_caselle);
   for(int i = 0; i <= n_caselle; i++ ){
@@ -97,11 +107,28 @@ int main(){
     }
   }
   winner=c->getNome();
-  cout<<"\n___________.__              __      __.__                             .__";
-  cout<<"\n\\__    ___/|  |__   ____   /  \\    /  \\__| ____   ____   ___________  |__| ______ /\\ ";
-  cout<<"\n  |    |   |  |  \\_/ __ \\  \\   \\/\\/   /  |/    \\ /    \\_/ __ \\_  __ \\ |  |/  ___/ \\/ ";
-  cout<<"\n  |    |   |   Y  \\  ___/   \\        /|  |   |  \\   |  \\  ___/|  | \\/ |  |\\___ \\  /\\ ";
-  cout<<"\n  |____|   |___|  /\\___  >   \\__/\\  / |__|___|  /___|  /\\___  >__|    |__/____  > \\/ ";
-  cout<<"\n                \\/     \\/         \\/          \\/     \\/     \\/                \\/     "<<winner<<endl;
+        cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t_____ _         __      ___                     _      _ \n";
+        cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t|_   _| |_  ___  \\ \\    / (_)_ _  _ _  ___ _ _  (_)___ (_)\n";
+        cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t  | | | ' \\/ -_)  \\ \\/\\/ /| | ' \\| ' \\/ -_) '_| | (_-<  _ \n";
+        cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t  |_| |_||_\\___|   \\_/\\_/ |_|_||_|_||_\\___|_|   |_/__/ (_)          "<<winner<<"\n\n\n\n";
+        cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t_________          _______    _______  _        ______ \n";
+        cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t\\__   __/|\\     /|(  ____ \\  (  ____ \\( (    /|(  __  \\ \n";
+        cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t   ) (   | )   ( || (    \\/  | (    \\/|  \\  ( || (  \\  )\n";
+        cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t   | |   | (___) || (__      | (__    |   \\ | || |   ) |\n";
+        cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t   | |   |  ___  ||  __)     |  __)   | (\\ \\) || |   | |\n";
+        cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t   | |   | (   ) || (        | (      | | \\   || |   ) |\n";
+        cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t   | |   | )   ( || (____/\\  | (____/\\| )  \\  || (__/  )\n";
+        cout<<"\t\t\t\t\t\t\t\t\t\t\t\t\t   )_(   |/     \\|(_______/  (_______/|/    )_)(______/ \n";
+
+
+        if(getc(stdin) != 13){
+          system("clear");
+        }
+
+
+  cout<<"\nVuoi giocare di nuovo? (Y o y)\n";
+  cin>>game;
+ }while((game=='y' || game=='Y'));
+
   return 0;
 }

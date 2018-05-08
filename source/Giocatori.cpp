@@ -3,13 +3,13 @@
 
 Giocatori::Giocatori(){
   head = NULL;
-  next = NULL;
 }
 Giocatori::~Giocatori(){}
 
 
 Persona *Giocatori::scegli_primo(){
   Persona *tmp = head;
+  Persona *max;
   Dado d1 = Dado();
   int lancio,x;
   if(tmp == NULL){
@@ -23,18 +23,17 @@ Persona *Giocatori::scegli_primo(){
       tmp->setValDadoInit(lancio);
     }
     tmp = tmp->getNext();
-  }
-  tmp = head;
-  Persona *tmp2 = tmp;
-  tmp = tmp->getNext();
+}
+  max = head;
+  tmp = max->getNext();
   bool check = false;
   while(tmp != NULL){
     if(tmp->getValDadoInit() != -1){
-      if(tmp->getValDadoInit() > tmp2->getValDadoInit()){
-        tmp2->setValDadoInit(-1);
-        tmp2 = tmp;
+      if(tmp->getValDadoInit() > max->getValDadoInit()){
+        max->setValDadoInit(-1);
+        max = tmp;
       }
-      else if(tmp->getValDadoInit() == tmp2->getValDadoInit()){
+      else if(tmp->getValDadoInit() == max->getValDadoInit()){
       }
       else{
         tmp->setValDadoInit(-1);
@@ -53,9 +52,8 @@ Persona *Giocatori::scegli_primo(){
     tmp = tmp->getNext();
   }
   if( x == 1){
-    cout<<"\n\nInizia il giocatore: "<<tmp2->getNome();
-    next = tmp2;
-    return next;
+    cout<<"\n\nInizia il giocatore: "<<max->getNome();
+    return max;
   }else{
     return scegli_primo();
   }
@@ -87,7 +85,6 @@ void Giocatori::aggiungi_giocatore(string nome){
     head->Persona::setCasella(0);
     head->Persona::setColore(colore);
     head->setNext(NULL);
-    next = head;
   }
   else{
     while(found==true){
