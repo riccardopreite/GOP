@@ -601,7 +601,6 @@ void Tabellone::duello(Persona *giocatore, Persona* giocatore2,int n_caselle){
   }
   int res_duello, res_duello_2;
   Dado d1 = Dado();
-  Dado d2 = Dado();
   Casella *tmp = Start;
   Casella *tmp2 = Start;
   while(duello==true){
@@ -628,12 +627,3 @@ void Tabellone::duello(Persona *giocatore, Persona* giocatore2,int n_caselle){
   }
 
 }
-#if 0
-void Tabellone::stampa_caselle(){
-Casella*tmp= Start;
-while(tmp!=NULL){
-cout<<"effect: "<<tmp->GetType()<<endl;
-tmp=tmp->GetSucc();
-}
-}
-#endif

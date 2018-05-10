@@ -24,14 +24,6 @@ void Coda::Shift(int val){
 	}
 	this->coda[0]=val;
 }
-void Coda::Shift2(){
-	int j=l-1;
-	for(int i = l-2; i >= 0; i-- ){
-		this->coda[j] = this->coda[i];
-		j--;
-	}
-	this->coda[0]=-1;
-}
 
 
 void Coda::Visualizza(){
@@ -48,16 +40,4 @@ bool Coda::Find(int val){
 		}
 	}
 	return false;
-}
-int Coda::insert(int n_card){
-	if (this->cont<4){
-		this->cont++;
-	}
-	for(int iq=3; iq>=0; iq--){
-		if(coda[iq]==-1){
-			coda[iq]=n_card;
-			break;
-		}
-	}
-	return cont;
 }
