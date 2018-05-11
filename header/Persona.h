@@ -4,7 +4,7 @@ private:
 	string _nome;
 	int _casella;
 	bool _sconfiggi_mostro;
-	int _colore;
+	string _colore;
 	int stop;
 	Persona *next;
 	int val_dado_init;
@@ -18,8 +18,8 @@ public:
 	int getCasella();
 	void setSconfiggi(bool sconfiggi_mostro);
 	bool getSconfiggi();
-	void setColore(int colore);
-	int getColore();
+	void setColore(string colore);
+	string getColore();
 	void setNext(Persona *succ);
 	Persona *getNext();
 	void setstop(int n);

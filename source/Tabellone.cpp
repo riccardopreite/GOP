@@ -232,7 +232,6 @@ void Tabellone::Visualizza(int n_caselle, Giocatori g){
   Persona *tmp2 = g.return_head();
   Persona *tmp3 ;
   int x = 0;
-  int colore;
   Persona *giocatore=g.return_head();
   cout<<tmp2->getNome();
   int res=0,caselle_2;
@@ -271,31 +270,7 @@ void Tabellone::Visualizza(int n_caselle, Giocatori g){
           }
           else if (x == 1){
             giocatore=tmp3;
-            colore=giocatore->getColore();
-            switch(colore){
-              case 31:
-              printf("%s:)", COL(31) );
-              break;
-              case 32:
-              printf("%s:)", COL(32) );
-              break;
-              case 33:
-              printf("%s:)", COL(33) );
-              break;
-              case 34:
-              printf("%s:)", COL(34) );
-              break;
-              case 35:
-              printf("%s:)", COL(35) );
-              break;
-              case 36:
-              printf("%s:)", COL(36) );
-              break;
-              case 37:
-              printf("%s:)", COL(37) );
-              break;
-            }
-            printf("%s",COL_CLEAR );
+            cout<<"\033[1;"<<giocatore->getColore()<<"m:)\033[0m";
             if(res<=9){
               cout<<"  ";
             }
@@ -308,31 +283,7 @@ void Tabellone::Visualizza(int n_caselle, Giocatori g){
         }
         else if (tmp->GetNome()!=NULL) {
           giocatore=tmp->GetNome();
-          colore=giocatore->getColore();
-          switch(colore){
-            case 31:
-            printf("%s:)", COL(31) );
-            break;
-            case 32:
-            printf("%s:)", COL(32) );
-            break;
-            case 33:
-            printf("%s:)", COL(33) );
-            break;
-            case 34:
-            printf("%s:)", COL(34) );
-            break;
-            case 35:
-            printf("%s:)", COL(35) );
-            break;
-            case 36:
-            printf("%s:)", COL(36) );
-            break;
-            case 37:
-            printf("%s:)", COL(37) );
-            break;
-          }
-          printf("%s",COL_CLEAR );
+          cout<<"\033[1;"<<giocatore->getColore()<<"m:)\033[0m";
           if(res<=9){
             cout<<"  ";
           }
@@ -374,31 +325,7 @@ void Tabellone::Visualizza(int n_caselle, Giocatori g){
       while((tmp->GetSucc() != NULL)&&(res<=23)) {
         if (tmp->GetNome()!=NULL) {
           giocatore=tmp->GetNome();
-          colore=giocatore->getColore();
-          switch(colore){
-            case 31:
-            printf("%s:)", COL(31) );
-            break;
-            case 32:
-            printf("%s:)", COL(32) );
-            break;
-            case 33:
-            printf("%s:)", COL(33) );
-            break;
-            case 34:
-            printf("%s:)", COL(34) );
-            break;
-            case 35:
-            printf("%s:)", COL(35) );
-            break;
-            case 36:
-            printf("%s:)", COL(36) );
-            break;
-            case 37:
-            printf("%s:)", COL(37) );
-            break;
-          }
-          printf("%s   ",COL_CLEAR );
+          cout<<"\033[1;"<<giocatore->getColore()<<"m:)\033[0m";
         }
         else cout<<"     ";
         res++;
@@ -421,32 +348,7 @@ void Tabellone::Visualizza(int n_caselle, Giocatori g){
       while((tmp->GetSucc() != NULL)&&(res<=n_caselle)) {
         if (tmp->GetNome()!=NULL) {
           giocatore=tmp->GetNome();
-          colore=giocatore->getColore();
-          colore=giocatore->getColore();
-          switch(colore){
-            case 31:
-            printf("%s:)", COL(31) );
-            break;
-            case 32:
-            printf("%s:)", COL(32) );
-            break;
-            case 33:
-            printf("%s:)", COL(33) );
-            break;
-            case 34:
-            printf("%s:)", COL(34) );
-            break;
-            case 35:
-            printf("%s:)", COL(35) );
-            break;
-            case 36:
-            printf("%s:)", COL(36) );
-            break;
-            case 37:
-            printf("%s:)", COL(37) );
-            break;
-          }
-          printf("%s   ",COL_CLEAR );
+          cout<<"\033[1;"<<giocatore->getColore()<<"m:)\033[0m";
         }
         else cout<<"     ";
         res++;

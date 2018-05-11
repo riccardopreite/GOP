@@ -61,7 +61,7 @@ Persona *Giocatori::scegli_primo(){
 
 void Giocatori::aggiungi_giocatore(string nome){
   bool found=true;
-  int colore;
+  string colore;
   Dado d1=Dado();
   Persona *tmp = head;
   Persona *tmp2;
@@ -69,17 +69,12 @@ void Giocatori::aggiungi_giocatore(string nome){
     cout<<"\ninserisci un numero da 31 a 37 per scegliere un colore.\n";
     printf("%sRED:31%s\n%sGREEN:32%s\n%sYELLOW:33%s\n%sBLUE:34%s\n%sPINK:35%s\n%sSKY:36%s\n%sWHITE:37%s\n",COL(31),COL_CLEAR,COL(32),COL_CLEAR,COL(33),COL_CLEAR,COL(34),COL_CLEAR,COL(35),COL_CLEAR,COL(36),COL_CLEAR,COL(37),COL_CLEAR );
     cin>>colore;
-    while((!cin.good())||((colore<=31)||(colore>=37))){
-      if(cin.good()){
-        if((colore>=31)&&(colore<=37)){
-          break;
-        }
-      }
+    while((colore<"31")||(colore>"37")){
       cout<<"\ninserisci un numero da 31 a 37 per scegliere un colore.\n";
       printf("%sRED:31%s\n%sGREEN:32%s\n%sYELLOW:33%s\n%sBLUE:34%s\n%sPINK:35%s\n%sSKY:36%s\n%sWHITE:37%s\n",COL(31),COL_CLEAR,COL(32),COL_CLEAR,COL(33),COL_CLEAR,COL(34),COL_CLEAR,COL(35),COL_CLEAR,COL(36),COL_CLEAR,COL(37),COL_CLEAR );
-      d1.err_input();
       cin>>colore;
-    }
+      }
+
     head = new Persona;
     head->Persona::setNome(nome);
     head->Persona::setCasella(0);
@@ -106,17 +101,11 @@ void Giocatori::aggiungi_giocatore(string nome){
     cout<<"\ninserisci un numero da 31 a 37 per scegliere un colore.\n";
     printf("%sRED:31%s\n%sGREEN:32%s\n%sYELLOW:33%s\n%sBLUE:34%s\n%sPINK:35%s\n%sSKY:36%s\n%sWHITE:37%s\n",COL(31),COL_CLEAR,COL(32),COL_CLEAR,COL(33),COL_CLEAR,COL(34),COL_CLEAR,COL(35),COL_CLEAR,COL(36),COL_CLEAR,COL(37),COL_CLEAR );
     cin>>colore;
-    while((!cin.good())||((colore<=31)||(colore>=37))){
-      if(cin.good()){
-        if((colore>=31)&&(colore<=37)){
-          break;
-        }
-      }
+    while((colore<"31")||(colore>"37")){
       cout<<"\ninserisci un numero da 31 a 37 per scegliere un colore.\n";
       printf("%sRED:31%s\n%sGREEN:32%s\n%sYELLOW:33%s\n%sBLUE:34%s\n%sPINK:35%s\n%sSKY:36%s\n%sWHITE:37%s\n",COL(31),COL_CLEAR,COL(32),COL_CLEAR,COL(33),COL_CLEAR,COL(34),COL_CLEAR,COL(35),COL_CLEAR,COL(36),COL_CLEAR,COL(37),COL_CLEAR );
-      d1.err_input();
       cin>>colore;
-    }
+      }
     tmp=head;
     while(tmp->getNext() != NULL){
       tmp = tmp->getNext();

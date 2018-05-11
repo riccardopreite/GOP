@@ -16,6 +16,12 @@ void visualizzaGOP(){
 
 int main(){
   visualizzaGOP();
+  int n = 31;
+  string inizio="\033[1;";
+  string fine="m:)\033[0m";
+  //string colore=(string)n;
+  //colore=colore+"@;1m";
+  //printf("%s %s %s", inizio,n,fine);
   int x=0,res,n_caselle,giocatori;
   bool win;
   char game;

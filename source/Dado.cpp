@@ -19,9 +19,9 @@ int Dado::Tira(){
   printf("%s|          |%s   %s|          |%s\n%s|__________|%s   %s|__________|%s\n",COL(33),COL_CLEAR,COL(31),COL_CLEAR,COL(33),COL_CLEAR,COL(31),COL_CLEAR );
   cout<<"\nPREMI INVIO PER TIRARE I DADI\n";
   if(getc(stdin) != 13){
-    res_1=((rand() % 500)+1);
+    res_1=((rand() % 599)+1);
     res_1=(res_1/100)+1;
-    res_2=((rand() % 500)+1);
+    res_2=((rand() % 599)+1);
     res_2=(res_2/100)+1;
     switch(res_1){
       case 1:
@@ -204,7 +204,7 @@ int Dado::Tira_2(){
   printf("\n%s____________%s\n%s|          |%s\n%s|          |%s\n%s|     *    |%s\n%s|          |%s\n%s|__________|%s\n",COL(33),COL_CLEAR,COL(33),COL_CLEAR,COL(33),COL_CLEAR,COL(33),COL_CLEAR,COL(33),COL_CLEAR,COL(33),COL_CLEAR);
   cout<<"PREMI INVIO PER TIRARE IL DADO\n";
   if(getc(stdin) != 13){
-    res_1=((rand() % 500)+1);
+    res_1=((rand() % 599)+1);
     res_1=(res_1/100)+1;
     switch (res_1) {
       case 1:

@@ -16,7 +16,7 @@ using namespace std;
 #include "Giocatori.h"
 #include "Casella.h"
 #include "Tabellone.h"
-#define COL(x) "\033[" #x ";1m"
+#define COL(x) "\033[1;" #x "m"
 #define COL_RED COL(31)
 #define COL_GREEN COL(32)
 #define COL_YELLOW COL(33)

@@ -4,6 +4,10 @@ Coda::Coda(){
 
 }
 Coda::Coda(int n){
+	if(n>10){
+		n=10;
+		cout<<"La coda non può essere più grande di 10, modificarla prima nell'header.\nPer ora il valore viene settato automaticamente a 10\n";
+	}
 	l = n;
 	cont=0;
 	for(int i = 0; i < l; i ++){
